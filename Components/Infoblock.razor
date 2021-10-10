@@ -1,0 +1,115 @@
+﻿@code {
+    private List<string> _paragraphs;
+    private List<string> _unorganisedList;
+    private List<string> _organisedList;
+
+
+    [Parameter] public string Title { get; set; }
+    [Parameter]
+    public List<string> Paragraphs
+    {
+        get { return _paragraphs; }
+        set
+        {
+            if (value.GetType() == typeof(string) && _paragraphs == null)
+            {
+                _paragraphs = new List<string>();
+                _paragraphs.Add(value.ToString());
+            }
+            else if (value.GetType() == typeof(string))
+            {
+                _paragraphs.Add(value.ToString());
+            }
+            else if (value.GetType() == typeof(List<string>))
+            {
+                _paragraphs = (List<string>)value;
+            }
+        }
+    }
+    [Parameter]
+    public List<string> UnorganisedList
+    {
+        get { return _unorganisedList; }
+        set
+        {
+            if (value.GetType() == typeof(string) && _unorganisedList == null)
+            {
+                _unorganisedList = new List<string>();
+                _unorganisedList.Add(value.ToString());
+            }
+            else if (value.GetType() == typeof(string))
+            {
+                _unorganisedList.Add(value.ToString());
+            }
+            else if (value.GetType() == typeof(List<string>))
+            {
+                _unorganisedList = (List<string>)value;
+            }
+        }
+    }
+    [Parameter]
+    public List<string> OrganisedList
+    {
+        get { return _organisedList; }
+        set
+        {
+            if (value.GetType() == typeof(string) && _organisedList == null)
+            {
+                _organisedList = new List<string>();
+                _organisedList.Add(value.ToString());
+            }
+            else if (value.GetType() == typeof(string))
+            {
+                _organisedList.Add(value.ToString());
+            }
+            else if (value.GetType() == typeof(List<string>))
+            {
+                _organisedList = (List<string>)value;
+            }
+        }
+    }
+    [Parameter] public RenderFragment<RenderFragment> Wrapper { get; set; }
+}
+
+<div>
+    @if (Title != null)
+    {
+        <h6>@Title</h6>
+    }
+
+    @if (Paragraphs != null)
+    {
+        <div>
+            @foreach (string paragraph in Paragraphs)
+            {
+                <p>@paragraph</p>
+            }
+        </div>
+    }
+
+    @if (UnorganisedList != null)
+    {
+        <div>
+            <ul>
+                @foreach (string item in UnorganisedList)
+                {
+                    <li>@item</li>
+                }
+            </ul>
+        </div>
+    }
+
+    @if (OrganisedList != null)
+    {
+        <div>
+            <ol>
+                @foreach (string item in OrganisedList)
+                {
+                    <li>@item</li>
+                }
+            </ol>
+        </div>
+    }
+</div>
+
+

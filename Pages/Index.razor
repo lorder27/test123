@@ -1,0 +1,594 @@
+﻿@page "/"
+<div class="index">
+    <header style="">
+        POVLASTICE OSOBA S INVALIDITETOM
+    </header>
+    <div>
+        <ol class="standard-orginised-list">
+            <li>
+                @* 0 - DOPUNSKO ZDRAVSTVENO OSIGURANJE  *@
+                <div class="box" @onclick="() => toggleHidden(ref hidden_sections[0])">
+                    <CloudSurf.Components.OpenCloseCaretButton IsClosed="hidden_sections[0]" />
+                    <h6>DOPUNSKO ZDRAVSTVENO OSIGURANJE</h6>
+                    <div hidden="@hidden_sections[0]">
+                        <p>
+                            Dopunsko zdravstveno osiguranje iz državnog proračuna osigurano je za osigurane osobe s
+                            invaliditetom koje imaju utvrđeno 100%-tno oštećenje organizma odnosno tjelesnog oštećenja
+                            prema posebnim propisima, zatim osobe kod kojih je utvrđeno više vrsta oštećenja te osobe s
+                            tjelesnim ili mentalnim oštećenjem ili psihičkom bolešću zbog kojih ne mogu samostalno izvoditi
+                            aktivnosti primjerene životnoj dobi sukladno propisima o socijalnoj skrbi.
+                        </p>
+                        <ul>
+                            <li>
+                                <p>
+                                    Za ostvarenje povlastice, potrebno se obratiti nadležnom uredu Hrvatskog zavoda za
+                                    zdravstveno osiguranje, koji je izdao zdravstvenu knjižicu, s osobnom iskaznicom,
+                                    zdravstvenom knjižicom i preslikom rješenja nadležnih tijela.
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+            <li>
+                @* 1 - STOMATOLOŠKA AMBULANTA ZA OSOBE S INVALIDITETOM *@
+                <div class="box" @onclick="() => toggleHidden(ref hidden_sections[1])">
+                    <CloudSurf.Components.OpenCloseCaretButton IsClosed="hidden_sections[1]" />
+                    <h6>STOMATOLOŠKA AMBULANTA ZA OSOBE S INVALIDITETOM</h6>
+                    <div hidden="@hidden_sections[1]">
+                        <p>
+                            Stomatološka ambulanta prilagođena za osobe s invaliditetom radi u Domu zdravlja Centar, Zagreb,
+                            Runjaninova 4 (prizemlje desno), direktni telefon: 4897688 radnim danom od 9,00 do 15,00 sati.
+                        </p>
+                    </div>
+                </div>
+            </li>
+
+            <li>
+                @* 2 - POVLAŠTENA TELEFONSKA PRETPLATA (T–COM) *@
+                <div class="box" @onclick="() => toggleHidden(ref hidden_sections[2])">
+                    <CloudSurf.Components.OpenCloseCaretButton IsClosed="hidden_sections[2]" />
+                    <h6>POVLAŠTENA TELEFONSKA PRETPLATA (T–COM)</h6>
+                    <div hidden="@hidden_sections[2]">
+                        <p>
+                            Član udruge može ostvariti pravo na povlaštenu telefonsku pretplatu ako telefonski priključak glasi na
+                            njegovo ime ili na ime člana njegove uže obitelji ako žive u zajedničkom kućanstvu.
+                            Povlastica se sastoji u 50% popusta na telefonsku pretplatu i 100 besplatnih impulsa mjesečno.
+                        </p>
+                        <ul>
+                            <li>
+                                <p>
+                                    Ove se povlastice ostvaruju putem udruge:
+                                    uz predočenje preslike rješenja o postotku tjelesnog oštećenja (koje se pribavljuje u
+                                    Hrvatskom zavodu za mirovinsko osiguranje)
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+
+            <li>
+                @* 3 - POVLAŠTENA TELEVIZIJSKA PRETPLATA (HRT) *@
+                <div class="box" @onclick="() => toggleHidden(ref hidden_sections[3])">
+                    <CloudSurf.Components.OpenCloseCaretButton IsClosed="hidden_sections[3]" />
+                    <h6>POVLAŠTENA TELEVIZIJSKA PRETPLATA (HRT)</h6>
+                    <div hidden="@hidden_sections[3]">
+                        <p>
+                            Uprava HRT-a izmijenila je Odluku za povlašteno plaćanje RTV pristojbe, kao i pravo na oslobađanje
+                            od plaćanja RTV pristojbe za vlasnike – korisnike RTV prijamnika (to pravo mogu ostvariti samo
+                            punoljetne osobe – nosioci domaćinstva).• POVLAŠTENO PLAĆANJE PRISTOJBE ZA RTV – prijamnik
+                            Uprava HRT-a donijela je Odluku da POVLAŠTENO plaćanje pristojbe imaju slijedeći vlasnici –
+                            korisnici RTV – prijamnika:
+                        </p>
+                        <ol>
+                            <li>
+                                <p>
+                                    punoljetne osobe oboljele od mišićne distrofije i srodnih neuromišićnih oboljenja – osobe
+                                    s invaliditetom članovi udruženja
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    punoljetne osobe koje su preboljele cerebralnu ili dječju paralizu s oštećenjem organa za
+                                    kretanje preko 80% korisnici doplatka za pomoć – osobe s invaliditetom članovi
+                                    udruženja osoba s invaliditetom
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    punoljetne osobe s invaliditetom i sa dijagnozom oboljenja: paraplegija, tetraplegija,
+                                    sc.multiplex, amputacija donjih ekstremiteta s oštećenjem organa za kretanja preko 80%
+                                    – osobe s invaliditetom članovi udruženja
+                                </p>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </li>
+
+            <li>
+                @* 4 - POPUST ISKON-a *@
+                <div class="box" @onclick="() => toggleHidden(ref hidden_sections[4])">
+                    <CloudSurf.Components.OpenCloseCaretButton IsClosed="hidden_sections[4]" />
+                    <h6>POPUST ISKON-a</h6>
+                    <div hidden="@hidden_sections[4]">
+                        <p>
+                            ISKON omogućuje osobama s invaliditetom s utvrđenim tjelesnim oštećenjem u visini 80 ili više
+                            postotaka popust na mjesečnu naknadu u visini od 10%.
+                        </p>
+                        <ul>
+                            <li>
+                                <p>
+                                    Popust vrijedi za sve Iskonove pakete osim HR.DUO paketa i ne može se kombinirati s
+                                    ostalim paketima na akciji. Za detaljne informacije nazovite besplatni telefon 0800 1000
+                                    ili pregledajte službene mrežne stranice Iskon-a.
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+        </ol>
+    </div>
+
+    <header style="width:100%; text-align:center;">
+        PROMET
+    </header>
+    <div>
+        <ol class="standard-orginised-list">
+            <li>
+                @* 5 -GODIŠNJA NAKNADA ZA UPORABU JAVNIH CESTA I CESTARINE *@
+                <div class="box" @onclick="() => toggleHidden(ref hidden_sections[5])">
+                    <CloudSurf.Components.OpenCloseCaretButton IsClosed="hidden_sections[5]" />
+                    <h6>GODIŠNJA NAKNADA ZA UPORABU JAVNIH CESTA I CESTARINE</h6>
+                    <div hidden="@hidden_sections[5]">
+                        <p>
+                            Godišnju naknadu za uporabu javnih cesta i cestarine (koja se plaća prilikom registracije osobnog
+                            vozila) ne plaćaju osobe s utvrđenih 80 ili više postotaka tjelesnog oštećenja odnosno osobe kod kojih
+                            je utvrđeno tjelesno oštećenje koje ima za posljedicu nesposobnost donjih ekstremiteta 60 ili više
+                            postotaka.
+                        </p>
+                        <ul>
+                            <li>
+                                <p>
+                                    Za ostvarenje povlastice, potrebno je podnijeti zahtjev Ministarstvu mora, prometa i
+                                    infrastrukture (Prisavlje 14, Zagreb, tel. 6169455 svakim radnim danom od 13,00 do 14,00
+                                    sati) uz presliku prometne dozvole te rješenja o stupnju i visini tjelesnog oštećenja.
+                                </p>
+                                <ul style="list-style-type: none;">
+                                    <li><h6>A. OSLOBAĐANJE PLAĆANJA CESTARINE</h6></li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                        <p>
+                            Pravo na besplatno korištenje autocesta ostvaruje se na temelju pozitivnih propisa Republike
+                            Hrvatske i Odlukama Uprave Hrvatskih autocesta d.o.o.
+                        </p>
+                        <ul>
+                            <li>Vozila u vlasništvu osobe s invaliditetom</li>
+                            <li>Vozila s pravom prednosti prolaska</li>
+                            <li>Vozila humanitarnih organizacija</li>
+                            <li>Službena vozila HAC-a</li>
+                        </ul>
+                        <p>
+                            Zakonom o cestama (NN 84/2011) plaćanja cestarine oslobođene su osobe kod kojih je utvrđeno
+                            tjelesno oštećenje koje ima za posljedicu nesposobnost donjih ekstremiteta 80% ili više postotaka te HRVI sa 100% tjelesnog oštećenja te osobe kojima je utvrđeno tjelesno oštećenje osjetila vida od
+                            100% i to samo za jedan osobni automobil koji imaju u svom vlasništvu, odnosno koji koriste na
+                            temelju ugovora o leasingu.
+                        </p>
+                        <ul style="list-style-type: none;">
+                            <li>
+                                <ul style="list-style-type: none;">
+                                    <li>
+                                        <h6>B. CESTARINA ZA UPORABU AUTOCESTA I OBJEKATA S NAPLATOM</h6>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <p>
+                            Cestarinu za uporabu autocesta i objekata s naplatom (most, tunel, vijadukt i sl.) ne plaćaju osobe
+                            kod kojih je utvrđeno tjelesno oštećenje koje ima za posljedicu nesposobnost donjih ekstremiteta 80
+                            ili više postotaka. Osoba može ostvariti povlasticu za jedno osobno vozilo koje ima u svom vlasništvu
+                            odnosno koje koristi temeljem ugovora o leasingu te isključivo kada se u tom osobnom vozilu nalazi.
+                        </p>
+                        <ul>
+                            <li>
+                                Za ostvarenje povlastice potrebno je predočiti SMART karticu koja se dobiva na zahtjev, a
+                                temeljem rješenja Ministarstva mora, prometa i infrastrukture (Prisavlje 14, Zagreb, tel.
+                                6169455 svakim radnim danom od 13,00 do 14,00 sati). Zahtjev izdaju Hrvatske autoceste
+                                d.o.o. (Jadranska avenija 6, Lučko, tel: 6504812, 6504813 – radnim danom od 8,00-16,00 sati,
+                                Ured za izdavanje invalidskih kartica) uz naplatu u visini 20,00 kn prilikom preuzimanja
+                                kartice.
+                            </li>
+                        </ul>
+                        <b>
+                            Za produženje-izdavanje SMART kartice za besplatno korištenje autocesta osim zakonski
+                            propisanih uvjeta potrebne su slijedeće isprave:
+                        </b>
+                        <ol>
+                            <li>fotokopiju knjižice vozila</li>
+                            <li>fotokopiju prometne dozvole</li>
+                            <li>fotokopiju osobne iskaznice</li>
+                        </ol>
+
+                        <p>
+                            Za izdavanje nove SMART kartice uz navedene isprave potrebno je dostaviti i fotografiju dimenzije
+                            2,5 x 3 cm.
+                        </p>
+                        <p>
+                            Navedene isprave možete dostaviti osobno ili poštom na adresu Hrvatske autoceste, Jadranska
+                            avenija 6, 10 250 Lučko. Radno vrijeme ureda Hrvatskih autocesta na lokaciji Lučko je od ponedjeljka
+                            do petka od 08 do 16 sati.
+                        </p>
+                    </div>
+                </div>
+            </li>
+            <li>
+                @* 6 - ZNAK PRISTUPAČNOSTI *@
+                <div class="box" @onclick="() => toggleHidden(ref hidden_sections[6])">
+                    <CloudSurf.Components.OpenCloseCaretButton IsClosed="hidden_sections[6]" />
+                    <h6>ZNAK PRISTUPAČNOSTI</h6>
+                    <div hidden="@hidden_sections[6]">
+                        <p>
+                            Pravo na znak pristupačnosti ima osoba sa 80 ili više posto tjelesnog oštećenja, odnosno osobe koje
+                            imaju oštećenja donjih ekstremiteta 60 ili više posto bez obzira posjeduju li ili ne osobni automobil.
+                        </p>
+                        <ul>
+                            <li>
+                                <p>
+                                    Za ostvarivanje prava potrebno je u Hrvatskom zavodu za mirovinsko osiguranje pribaviti
+                                    rješenje za pribavljanje znaka pristupačnosti
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    Rješenje o znaku pristupačnosti za razdoblje od pet godina izdaje Ured državne uprave u
+                                    županiji nadležan za promet
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    Uz zahtjev za izdavanje znaka pristupačnosti prilaže se biljeg od 77 kn, nalaz i mišljenje
+                                    ovlaštenog vještaka Hrvatskog zavoda za mirovinsko osiguranje i jedna fotografija
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+            <li>
+                @* 7 - PARKIRANJE *@
+                <div class="box" @onclick="() => toggleHidden(ref hidden_sections[7])">
+                    <CloudSurf.Components.OpenCloseCaretButton IsClosed="hidden_sections[7]" />
+                    <h6>PARKIRANJE</h6>
+                    <div hidden="@hidden_sections[7]">
+                        <p>
+                            Osobe s invaliditetom u gradu Zagrebu, osim na posebno obilježenim mjestima rezerviranim za
+                            parkiranje vozila osoba s invaliditetom, bez naknade jedno svoje vozilo mogu parkirati i na javnim
+                            parkiralištima u parkirališnim zonama naplate koja nisu posebno obilježena kao mjesta rezervirana za
+                            parkiranje vozila osoba s invaliditetom, a najduže dva sata tijekom jednog dana.
+                        </p>
+                        <p>
+                            Ovo pravo može se ostvariti uz istaknut važeći Znak pristupačnosti i važeću naljepnicu koju izdaje
+                            organizator parkiranja (Zagrebparking, Šubićeva 40/III). Za dobivanje naljepnice potrebno je dostaviti
+                            Znak pristupačnosti, rješenje temeljem kojeg je ishođen Znak pristupačnosti, prometnu dozvolu,
+                            osobnu iskaznicu. Naljepnica vrijedi jednu godinu, a trošak izrade i izdavanja iste je 30,00 kn.
+                        </p>
+                        <p>
+                            Pravo na ostvarivanje ove pogodnosti mogu ostvariti sve osobe koje posjeduju važeći znak
+                            pristupačnosti, bez obzira na to imaju li prebivalište ili boravište u Gradu Zagrebu.
+                        </p>
+                        <p>
+                            Osoba u čiju korist je naljepnica izdana može zatražiti da se odobri izdavanje naljepnice za drugo
+                            vozilo (drugu registarsku oznaku), što se smatra novim izdavanjem naljepnice.
+                        </p>
+                    </div>
+                </div>
+            </li>
+            <li>
+                @* 8 - ČLANSKE POGODNOSTI U HAK–u *@
+                <div class="box" @onclick="() => toggleHidden(ref hidden_sections[8])">
+                    <CloudSurf.Components.OpenCloseCaretButton IsClosed="hidden_sections[8]" />
+                    <h6>ČLANSKE POGODNOSTI U HAK–u</h6>
+                    <div hidden="@hidden_sections[8]">
+                        <p>
+                            Hrvatski auto-klub odobrio je članovima udruga osoba s inavliditetom povlasticu kod učlanjenja u
+                            HAK. Time plaćaju umanjenu članarinu (40 kuna) i sniženu cijenu knjižice «Auto tuning pomoć u RH»
+                            (60 kuna).
+                        </p>
+                        <p>
+                            Te pogodnosti ostvaruju osobe s tjelesnim oštećenjem od 40% i više koje same upravljaju vozilom,
+                            vlasnici vozila koji zbog tjelesnog oštećenja ne mogu upravljati vozilom, te roditelj ili skrbnik osobe s
+                            invaliditetom koji vlastito vozilo koristi za zadovoljavanje potreba te osobe. Pogodnosti se ostvaruju
+                            preko udruge.
+                        </p>
+                    </div>
+                </div>
+            </li>
+            <li>
+                @* 9 - UVOZ AUTOMOBILA BEZ CARINE *@
+                <div class="box" @onclick="() => toggleHidden(ref hidden_sections[9])">
+                    <CloudSurf.Components.OpenCloseCaretButton IsClosed="hidden_sections[9]" />
+                    <h6>UVOZ AUTOMOBILA BEZ CARINE</h6>
+                    <div hidden="@hidden_sections[9]">
+                        <p>
+                            Temeljem članka 26. Uredbe o postupku za ostvarivanje oslobađanja od plaćanja carine (“Narodne
+                            novine”, broj 154/03) osobe s invaliditetom uz određene uvjete ne plaćaju carinu pri uvozu osobnog
+                            automobila ako imaju tjelesno oštećenje i to:
+                        </p>
+                        <ul>
+                            <li>
+                                <p>
+                                    80% ili više tjelesnog oštećenja nastalog zbog oštećenja donjih ekstremiteta, odnosno
+                                    oštećenja hrptenjače ili centralnog živčanog sustava, koje imaju za posljedicu oštećenja
+                                    funkcije donjih ekstremiteta
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    100% oštećenja donjih i drugih ekstremiteta, funkcije bubrega (dijalizirani bolesnici), vida
+                                    (slijepe osobe), te tetraplegijskih i paraplegijskih bolesti
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+            <li>
+                @* 10 - POVLASTICA PRI VOŽNJI VLAKOM ILI BRODOM *@
+                <div class="box" @onclick="() => toggleHidden(ref hidden_sections[10])">
+                    <CloudSurf.Components.OpenCloseCaretButton IsClosed="hidden_sections[10]" />
+                    <h6>POVLASTICA PRI VOŽNJI VLAKOM ILI BRODOM</h6>
+                    <div hidden="@hidden_sections[10]">
+                        <p>
+                            Povlasticu pri vožnji vlakom ili brodom odnosno popust u visini 75% na punu vrijednost redovne
+                            cijene vozne karte te besplatnu voznu kartu za pratnju u slučaju da je pratnja osoba bez invaliditeta,
+                            mogu ostvariti osobe s utvrđenim tjelesnim oštećenjem organa za kretanje ukupnog postotka u visini
+                            najmanje 70%.
+                        </p>
+                        <p>
+                            Povlastica se odnosi na četiri putovanja godišnje željeznicom ili brodom unutar Repulike Hrvatske, a
+                            izdana objava vrijedi 60 dana za oba smjera. Jednim putovanjem smatra se odlazak iz polaznog mjesta u uputno mjesto i povratak nazad. Povlastica se odnosi na prijevoz brodom i na prijevoz u
+                            prvom i drugom razredu putničkog ili brzog vlaka.
+                        </p>
+                        <ul>
+                            <li>
+                                <p>
+                                    Osobe s područja Grada Zagreba povlasticu mogu ostvariti u Gradskoj upravi, Gradskom
+                                    uredu za socijalnu zaštitu i osobe s invaliditetom, Odjel za zaštitu osoba s invaliditetom, na
+                                    Trgu Stjepana Radića 1, soba 236, II kat, tel. 01/6101236, a osobe s područja izvan grada
+                                    Zagreba pri nadležnom Županijskom uredu.
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    Za ostvarenje povlastice potrebno je dostaviti presliku rješenja o stupnju i visini tjelesnog
+                                    oštećenja (ako ih postoji više – onda sva), presliku osobne iskaznice te OIB. Pratnja treba u
+                                    navdeni ured doći osobno prilikom podnašanja prvog zahtjeva te ponijeti presliku osobne
+                                    iskaznice i OIB.
+                                </p>
+                            </li>
+                        </ul>
+                        <ul style="list-style-type: none;">
+                            <li>
+                                <ul style="list-style-type: none;">
+                                    <li>
+                                        <h6>A. PRIJEVOZ VOZILA NA DRŽAVNIM TRAJEKTNIM LINIJAMA</h6>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <p>
+                            Besplatan prijevoz osobnih vozila na državnim trajektnim linijama moguć je za osobe s invaliditetom
+                            kod kojih je utvrđeno tjelesno oštećenje koje ima za posljedicu nesposobnost donjih ekstremiteta
+                            80% ili više, a odnosi se na vozila registrirana na osobu s invaliditetom ili roditelja, skrbnika ili
+                            zakonskog zastupnika osobe s invaliditetom, kao i vozila tih osoba kao korisnika leasinga.
+                        </p>
+                        <ul>
+                            <li>
+                                <p>
+                                    Za ostvarenje povlastice potrebno je poslati pisanu zamolbu s dokumentacijom Službi
+                                    prodaje Jadrolinije na passdept_h@jadrolinija.hr ili fax 051/337110, a za dodatne informacije
+                                    kontakt je 021/338223.
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+            <li>
+                @* 11 - POMOĆ ZA VRIJEME PUTOVANJA AVIONOM *@
+                <div class="box" @onclick="() => toggleHidden(ref hidden_sections[11])">
+                    <CloudSurf.Components.OpenCloseCaretButton IsClosed="hidden_sections[11]" />
+                    <h6>POMOĆ ZA VRIJEME PUTOVANJA AVIONOM</h6>
+                    <div hidden="@hidden_sections[11]">
+                        <p>
+                            Pomoć za vrijeme putovanja avionom u tvrtki Croatia Airlines mogu zatražiti sve osobe s
+                            invaliditetom uz prethodno poslan zahtjev 72 sata prije leta, a najkasnije 24 sata prije leta. Za detalje
+                            se potrebno obratiti u Kontakt centar (e-pošta: contact@croatiaairlines.hr, tel: 072/50050).
+                        </p>
+                    </div>
+                </div>
+            </li>
+            <li>
+                @* 12 - BESPLATAN ULAZ VOZILOM NA ŠRC JARUN *@
+                <div class="box" @onclick="() => toggleHidden(ref hidden_sections[12])">
+                    <CloudSurf.Components.OpenCloseCaretButton IsClosed="hidden_sections[12]" />
+                    <h6>BESPLATAN ULAZ VOZILOM NA ŠRC JARUN</h6>
+                    <div hidden="@hidden_sections[12]">
+                        <p>
+                            Besplatan ulaz vozilom na ŠRC Jarun ostvaruju osobe s invaliditetom s utvrđenim tjelesnim
+                            oštećenjem ukupnog postotka 70 ili više postotaka koje imaju važeći Znak pristupačnosti. Godišnja
+                            kartica vrijedi godinu dana od datuma izdavanja i važeća je isključivo uz važeći Znak pristupačnosti
+                            istaknut na vozilu.
+                        </p>
+                        <ul>
+                            <li>
+                                <p>
+                                    Za ostvarenje povlastice odnosno dobivanje godišnje kartice potrebno se obratiti u Službu
+                                    naplate parkiranja u Ustanovi Upravljanje sportskim objektima, RŠC Jarun. Godišnja kartica
+                                    vrijedi godinu dana.
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    Potrebna dokumentacija za vađenje kartice je sljedeća: preslika rješenja o stupnju i visini
+                                    tjelesnog oštećenja (original na uvid), preslika prometne dozvole (original na uvid), pisana
+                                    Zamolba za ostvarivanje povlastice te manipulativni troškovi izdavanja godišnje kartice u
+                                    iznosu od 20,00 kn.
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+        </ol>
+    </div>
+
+    <header style="width:100%; text-align:center;">
+        STANOVANJE
+    </header>
+    <ol  class="standard-orginised-list">
+        <li>
+            @* 13 - BORAVIŠNA PRISTOJBA *@
+            <div class="box" @onclick="() => toggleHidden(ref hidden_sections[13])">
+                <CloudSurf.Components.OpenCloseCaretButton IsClosed="hidden_sections[13]" />
+                <h6>BORAVIŠNA PRISTOJBA</h6>
+                <div hidden="@hidden_sections[13]">
+                    <p>
+                        Boravišnu pristojbu ne plaćaju osobe s invaliditetom s utvrđenim tjelesnim oštećenjem u visini 70 ili
+                        više postotaka te jedan pratitelj, a što dokazuju odgovarajućim dokumentima.
+                    </p>
+                </div>
+            </div>
+        </li>
+    </ol>
+
+    <header style="width:100%; text-align:center;">
+        KULTURA I DRUŠTVO
+    </header>
+    <div>
+        <ol  class="standard-orginised-list">
+            <li>
+                @* 14 - POPUST U KAZALIŠTU GAVELLA *@
+                <div class="box" @onclick="() => toggleHidden(ref hidden_sections[14])">
+                    <CloudSurf.Components.OpenCloseCaretButton IsClosed="hidden_sections[14]" />
+                    <h6>POPUST U KAZALIŠTU GAVELLA</h6>
+                    <div hidden="@hidden_sections[14]">
+                        <p>
+                            Popust u kazalištu Gavella u visini od 50% na punu cijenu ulaznice, moguć je za sve osobe s
+                            invaliditetom uz predočenje dokumenta kojim dokazuju status osobe s invaliditetom. Potrebno se
+                            obratiti u kazalište Gavella, Frankopanska 10, Zagreb Gavella
+                        </p>
+                    </div>
+                </div>
+            </li>
+            <li>
+                @* 15 - BESPLATAN ULAZ U MUZEJ GRADA ZAGREBA *@
+                <div class="box" @onclick="() => toggleHidden(ref hidden_sections[15])">
+                    <CloudSurf.Components.OpenCloseCaretButton IsClosed="hidden_sections[15]" />
+                    <h6>BESPLATAN ULAZ U MUZEJ GRADA ZAGREBA</h6>
+                    <div hidden="@hidden_sections[15]">
+                        <p>
+                            Besplatan ulaz u Muzej grada Zagreba, Opatička 20, Zagreb, moguć je za sve osobe s invaliditetom (uz
+                            eventualno predočenje članske knjižice) prvi utorak u mjesecu. Ako je riječ o grupi (minimalno 10
+                            osoba) koja želi vodiča (besplatno), potrebno je zatražiti vodiča na samom ulazu u Muzej
+                        </p>
+                    </div>
+                </div>
+            </li>
+            <li>
+                @* 16 - ČLANSTVO U NACIONALNOJ SVEUČILIŠNOJ KNJIŽNICI *@
+                <div class="box" @onclick="() => toggleHidden(ref hidden_sections[16])">
+                    <CloudSurf.Components.OpenCloseCaretButton IsClosed="hidden_sections[16]" />
+                    <h6>ČLANSTVO U NACIONALNOJ SVEUČILIŠNOJ KNJIŽNICI</h6>
+                    <div hidden="@hidden_sections[16]">
+                        <p>
+                            Osobe s invaliditetom ostvaruju popust u vidu neplaćanja naknade za članstvo u Nacionalnoj
+                            sveučilišnoj knjižnici prilikom upisa ili produljenja članstva u NSK.
+                        </p>
+                    </div>
+                </div>
+            </li>
+            <li>
+                @* 17 - POPUST U VRTIĆIMA GRADA ZAGREBA *@
+                <div class="box" @onclick="() => toggleHidden(ref hidden_sections[17])">
+                    <CloudSurf.Components.OpenCloseCaretButton IsClosed="hidden_sections[17]" />
+                    <h6>POPUST U VRTIĆIMA GRADA ZAGREBA</h6>
+                    <div hidden="@hidden_sections[17]">
+                        <p>
+                            Roditelji s invaliditetom s prebivalištem na području Grada Zagreba ostvaruju olakšice u plaćanju
+                            redovitog programa olakšice u plaćanju redovitog programa prilikom plaćanja mjesečnog iznosa za
+                            sudjelovanje djeteta u vrtiću prema sljedećim kriterijima:
+                        </p>
+                        <ul>
+                            <li>
+                                <p>
+                                    dijete roditelja osobe s invaliditetom (100% i 90%) – oslobađa se od obveze sudjelovanja u
+                                    cijeni programa,
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    dijete roditelja osobe s invaliditetom (80% do 60%) – plaća 50% od iznosa sudjelovanja u
+                                    cijeni programa,
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    dijete roditelja osobe s invaliditetom (50% i manje) – plaća 75% od iznosa sudjelovanja u
+                                    cijeni programa.
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    Roditelj se može koristiti samo jednom olakšicom koja je za njega najpovoljnija.
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+            <li>
+                @* 18 - ULAZ U NACIONALNI PARK PLITVIČKA JEZERA *@
+                <div class="box" @onclick="() => toggleHidden(ref hidden_sections[18])">
+                    <CloudSurf.Components.OpenCloseCaretButton IsClosed="hidden_sections[18]" />
+                    <h6>ULAZ U NACIONALNI PARK PLITVIČKA JEZERA</h6>
+                    <div hidden="@hidden_sections[18]">
+                        <p>
+                            Besplatne ulaznice u Nacionalni park Plitvička jezera mogu ostvariti sve osobe s tjelesnim oštećenjem
+                            utvrđenog ukupnog postotka u visini 50 ili više postotaka. Popust se ostvaruje na ulaznim
+                            recepcijama Ulaza 1 i Ulaza 2 Nacionalnog parka Plitvička jezera
+                        </p>
+                    </div>
+                </div>
+            </li>
+        </ol>
+    </div>
+</div>
+
+@code{
+
+    private int _sectionCount = 50;
+    private int SectionCount
+    {
+        get { return _sectionCount; }
+        set { _sectionCount = value; }
+    }
+    private bool[] hidden_sections;
+
+    protected override void OnInitialized()
+    {
+        hidden_sections = new bool[SectionCount];
+        for (int i = 0; i < hidden_sections.Length; i++) { hidden_sections[i] = true; }
+    }
+
+    //protected override async Task OnInitializedAsync(){}
+
+    protected void toggleHidden(ref bool value)
+    {
+        value = !value;
+    }
+}
