@@ -1,4 +1,4 @@
-﻿<div class="top-row pl-4 navbar navbar-dark">
+﻿@*<div class="top-row pl-4 navbar navbar-dark">
     <a class="navbar-brand" href="">CloudSurf</a>
     <button class="navbar-toggler" @onclick="ToggleNavMenu">
         <span class="navbar-toggler-icon"></span>
@@ -24,7 +24,57 @@
         </li>
 
     </ul>
+</div>*@
+
+<div class="navigation-toolbar">
+
+    <div class="nav-section-wrapper">
+        <div class="nav-section">
+            <a class="logo-sm" href="" />
+        </div>
+        <div class="nav-section toggler">
+            <button class="toggler-btn-wrapper" @onclick="ToggleNavMenu">
+                <i class="fas fa-bars" style="color:white;"></i>
+            </button>
+        </div>
+    </div>
+
+    <div class="nav-section-wrapper nav-grid @NavMenuCssClass" @onclick="ToggleNavMenu">
+        <ul class="nav-list">
+            <li>
+                <NavLink class="" href="" target="_blank">
+                    <span class="oi oi-home" aria-hidden="true"></span> Home
+                </NavLink>
+            </li>
+            <li>
+                <NavLink class="" href="Usluge" target="_blank">
+                    <span class="oi oi-plus" aria-hidden="true"></span> Usluge
+                </NavLink>
+            </li>
+            <li>
+                <NavLink class="" href="Usluge" target="_blank">
+                    <span class="oi oi-plus" aria-hidden="true"></span> Statut Udruge
+                </NavLink>
+            </li>
+        </ul>
+    </div>
+
 </div>
+
+<style>
+    .logo-sm {
+        background: url(../wwwroot/Resources/Images/logo.svg);
+        background-size: 100% 100%;
+        margin: 0 auto;
+        box-sizing: border-box;
+        display: block;
+        width: 40px;
+        height: 40px;
+        background-size: 40px 40px;
+    }
+</style>
+
+
 
 @code {
     private bool collapseNavMenu = true;
