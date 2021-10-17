@@ -14,7 +14,6 @@ namespace CloudSurf
 {
     public class Program
     {
-        protected static string ServerLocation { get; } = "https://localhost:44313/";
         public static async Task Main(string[] args)
         {
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
@@ -23,7 +22,7 @@ namespace CloudSurf
             builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
             builder.Services.AddTransient(sp => new HttpClient(new DefaultBrowserOptionsMessageHandler(new HttpClientHandler()) // new HttpClientHandler() in .NET 5.0
             {
-                DefaultBrowserRequestCache = BrowserRequestCache.NoStore,
+                DefaultBrowserRequestCache = BrowserRequestCache.Reload,
                 DefaultBrowserRequestCredentials = BrowserRequestCredentials.Include,
                 DefaultBrowserRequestMode = BrowserRequestMode.Cors,
             })

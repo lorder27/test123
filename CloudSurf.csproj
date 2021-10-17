@@ -23,6 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Components\Homepage\" />
     <Folder Include="Models\" />
   </ItemGroup>
 

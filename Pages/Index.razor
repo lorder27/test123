@@ -1,184 +1,343 @@
 ﻿@page "/"
+@inject HttpClient Http
 
-<div class="container-fluid">
+@code{
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+    }
+}
 
-    <div class="row mt-5 mb-5">
+<style>
+    .title {
+        padding: 6rem 0;
+        margin-bottom: 5rem;
+        font-weight: bold;
+        text-align: center;
+        font-weight: 900;
+        font-size: 4rem;
+        background: #cfafba;
+        text-transform: uppercase;
+    }
+
+    .branded {
+        color: #8585ff;
+        text-shadow: rgb(0, 0, 0) 2px 2px 3px;
+    }
+
+    .bg-interchanged {
+        background: #cfafba;
+        color: white;
+        text-align: center;
+        line-height: 1.5rem;
+    }
+
+    .paragraph-block {
+        text-align: center;
+        margin: 2rem 0;
+    }
+
+    .list-block {
+        text-align: left;
+        margin: 2rem 0;
+        display:flex;
+        justify-content:center;
+        font-size:0.8rem;
+    }
+
+    .table-block {
+        text-align: left;
+        margin: 2rem 0;
+        display: flex;
+        justify-content: center;
+        border-collapse: separate;
+        border-spacing: 10px;
+    }
+
+    td {
+        padding: 5px;
+    }
+
+    .defualt-font {
+        font-family: "Arial Black", Gadget, sans-serif;
+        font-size: 1rem;
+    }
+
+    .max-w {
+        max-width: 900px;
+    }
+
+    .centered {
+        margin: 0 auto;
+    }
+
+
+    ul {
+        list-style-type: none;
+    }
+
+    .blank_row {
+        height: 10px !important; /* overwrites any other rules */
+        background-color: #FFFFFF;
+    }
+</style>
+
+<div class="branded title">
+    <span>
+        Udruga Kroničnih bubrežnih bolesnika
+    </span>
+</div>
+
+<div class="container-fluid defualt-font">
+
+    <div class="row mt-5 mb-5 max-w centered">
 
         <div class="col-md-6 text-center">
-            <img src="/Resources/Images/logo.svg" width="50%" />
+            <img src="/Resources/Images/logo.svg" width="40%" />
         </div>
 
-        <div class="col-md-6 mx-auto d-flex align-items-center text-center">
-            <h2>
-                Udruga Kronični bubrežnih bolesnika
+        <div class="col-md-6 mx-auto text-center d-flex align-items-center">
+            <h2 class="branded">
+                Djelujmo zajedno, učimo o sebi, pomažimo drugima.
             </h2>
         </div>
 
     </div>
 
-    <div class="row mt-5 mb-5 justify-content-center">
 
-        <div class="col-md-6  d-flex align-items-center text-center">
-            <h3>
-                Djelujmo zajedno, učimo o sebi, pomažimo drugima.
-            </h3>
-        </div>
 
-    </div>
+    <div class="row p-5 mt-auto bg-interchanged justify-content-center">
 
-    <div class="row mt-auto">
-        <div class="col-md-4">
-            <h4>
+        <div class="col max-w text-center">
+
+            <h4 class="branded">
                 Naučimo živjeti bolje uz dijalizu:
             </h4>
-            <ul>
+
+            <ul class="text-center">
                 <li>
-                    ✓Kako konzumirati ukusnu hranu i ne ugroziti sebe
+                    Kako konzumirati ukusnu hranu i ne ugroziti sebe
                 </li>
                 <li>
-                    ✓Mogu piti kada želim (no NE koliko želim)
+                    Mogu piti kada želim (no NE koliko želim)
                 </li>
                 <li>
-                    ✓Mogu se osjećati sretnije
+                    Mogu se osjećati sretnije
                 </li>
                 <li>
-                    ✓Kako biti „fit“ i vježbati kvalitetno
+                    Kako biti „fit“ i vježbati kvalitetno
                 </li>
                 <li>
-                    ✓Želim očuvati svoju fistulu / kateter
+                    Želim očuvati svoju fistulu / kateter
                 </li>
                 <li>
-                    ✓Kvaliteta života mi je važna
+                    Kvaliteta života mi je važna
                 </li>
             </ul>
         </div>
+    </div>
 
-        <div class="col-md-4">
-            <h4>
+    <div class="row p-5 mt-auto justify-content-center">
+
+        <div class="col max-w text-center">
+
+            <h4 class="branded">
                 Obrasci
             </h4>
-            <ul>
+            <ul class="text-center">
                 <li>
-                    <a href="~/Resources/PDF/Tiskanica_br_1_3.pdf">
+                    <a href="/Resources/PDF/Tiskanica_br_1_3.pdf">
                         Zahtjev za priznanje prava na naknadu zbog tjelesnog oštećenja
                     </a>
                 </li>
                 <li>
-                    <a href="~/Resources/PDF/Tiskanica_zahtjeva_br_1_2.pdf">
+                    <a href="/Resources/PDF/Tiskanica_zahtjeva_br_1_2.pdf">
                         Zahtjev za priznavanje prava na invalidsku mirovinu / ocjenu radne sposobnosti ili privremenu invalidsku mirovinu
                     </a>
                 </li>
                 <li>
-                    <a href="https://www.mirovinsko.hr/hr/tiskanice/482">Tiskanice</a>
+                    <a href="https://www.mirovinsko.hr/hr/tiskanice/482" target="_blank">Tiskanice</a>
                 </li>
                 <li>
-                    <a href="https://www.hsuir.hr/vijesti/novi-obrazac-lijecnicke-svjedodzbe-za-ostvarivanje-povlastica-na-hrt-pretplatu">Obrazac za ostvarivanje prava na HRT pretplatu</a>
+                    <a href="https://www.hsuir.hr/vijesti/novi-obrazac-lijecnicke-svjedodzbe-za-ostvarivanje-povlastica-na-hrt-pretplatu" target="_blank">Obrazac za ostvarivanje prava na HRT pretplatu</a>
                 </li>
             </ul>
         </div>
+    </div>
 
-        <div class="col-md-4">
-            <h4>
+    <div class="row p-5 mt-auto bg-interchanged justify-content-center">
+
+        <div class="col max-w text-center">
+            <h4 class="branded">
                 Povlastice
             </h4>
             <p>
                 Pogledajte povlstice koje pružamo:
             </p>
             <p>
-                <a class="btn" href="Povlastice">Povlastice</a>
+                <a class="btn btn-success" href="Povlastice">Povlastice</a>
             </p>
         </div>
     </div>
 
-    <div class="row mt-5 mb-5 justify-content-center w-auto">
-        <div class="col-md-40 p-5 text-left">
-            <h2>O nama</h2>
-            <p>
-                Udruga kroničnih bubrežnih bolesnika Zagreb je osnovana 18.08.2021 s ciljem udruživanja pacijenata
-                koji su u početnom stadiju kronične bubrežne bolesti, peritonijske ili hemodijelaize, te
-                transplantacije.
-            </p>
-            <p>
-                Zapisnik sa sjednice Upravnog odbora UDRUGE KRONIČNIH BUBREŽNIH BOLESNIKA Zagrenb.
-            </p>
-            <p>
-                Sjednica Upravnog odbora UDRUGE KRONIČNIH BUBREŽNIH BOLESNIKA održana je dana 20
-                srpnja.2021 u Samoboru, Voćarska 7. Na sjednici su prisutni svi članovi Upravnog odbora izabrani na
-                osnivačkoj skupštini Društva održanoj 20.srpnja 2021.
-            </p>
-            <p>
+    <div class="row p-5 mt-auto justify-content-center">
+
+        <div class="col max-w text-center">
+
+            <h2 class="branded">
+                O nama
+            </h2>
+            <div class="paragraph-block">
+                <p>
+                    Udruga kroničnih bubrežnih bolesnika Zagreb je osnovana 18.08.2021 s ciljem udruživanja pacijenata
+                    koji su u početnom stadiju kronične bubrežne bolesti, peritonijske ili hemodijelaize, te
+                    transplantacije.
+                </p>
+                <p>
+                    Zapisnik sa sjednice Upravnog odbora UDRUGE KRONIČNIH BUBREŽNIH BOLESNIKA Zagrenb.
+                </p>
+                <p>
+                    Sjednica Upravnog odbora UDRUGE KRONIČNIH BUBREŽNIH BOLESNIKA održana je dana 20
+                    srpnja.2021 u Samoboru, Voćarska 7. Na sjednici su prisutni svi članovi Upravnog odbora izabrani na
+                    osnivačkoj skupštini Društva održanoj 20.srpnja 2021.
+                </p>
+            </div>
+
+            <div class="paragraph-block">
                 Članovi osnivačke skupštine:
-                <ol>
-                    <li> Martina Herceg</li>
-                    <li>Stjepan Pereković</li>
-                    <li>Lana Poljak</li>
-                    <li>Ivan Kralj</li>
-                    <li>Valentina Dianežević</li>
-                </ol>
-            </p>
-            <p>
+            </div>
+
+            <div class="list-block">
+                <div>
+                    <ol>
+                        <li>Martina Herceg</li>
+                        <li>Stjepan Pereković</li>
+                        <li>Lana Poljak</li>
+                        <li>Ivan Kralj</li>
+                        <li>Valentina Dianežević</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="paragraph-block">
                 Utvrđuje se dnevni red:
-                <ol>
-                    <li>Izbor Predsjednika Društva</li>
-                    <li>Izbor Dopredsjednika Društva</li>
-                    <li>Izbor Tajnika Društva</li>
-                    <li>Odluka o poslovnoj adresi Društva</li>
-                </ol>
-            </p>
-            <p>
+            </div>
+
+            <div class="list-block">
+                <div>
+                    <ol>
+                        <li>Izbor Predsjednika Društva</li>
+                        <li>Izbor Dopredsjednika Društva</li>
+                        <li>Izbor Tajnika Društva</li>
+                        <li>Odluka o poslovnoj adresi Društva</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="paragraph-block">
                 Utvrđuje se da su jednoglasno predložene i donesene sljedeće odluke:
-                <ul>
-                    <li>
-                        Ad.1. Za Predsjednika Društva izabire se Martina Herceg, OIB:45771138602. Izabrani Predsjednik
-                        Društva je ujedno i Predsjednik Upravnog odbora i Predsjednik Skupštine sukladno Statutu Društva.
-                    </li>
-                    <li>
-                        Ad.2. Za Dopredsjednike Društva izabire se: Stjepan Pereković, OIB: 88069130744.
-                    </li>
-                    <li>
-                        Ad.3. Za Tajnika Društva izabire se: Lana Poljak, OIB:41008595359.
-                    </li>
-                    <li>
-                        Ad.4 .Poslovna adresa Društva u sjedištu Društva u Samoboru je Voćarska 7.
-                    </li>
-                </ul>
-            </p>
-            <p>
-                Udruga promovira zdrav način života unatoč specifičnim problemima sa kojima se susreću kronični
-                bubrežni bolesnici.
-            </p>
-            <ul>
-                <li>OIB: 53272771004           </li>
-                <li>IBAN: HR6524030091121004998</li>
-                <li>
-                    <p>Kontakt:</p>
+            </div>
+
+            <div class="list-block">
+                <div>
                     <ul>
-                        <li>Mobitel: 095-199-6628       </li>
-                        <li>E mail: UdrugaKBBZ@gmail.com</li>
+                        <li>
+                            <p>
+                                Ad.1. Za Predsjednika Društva izabire se Martina Herceg, OIB:45771138602. Izabrani Predsjednik
+                                Društva je ujedno i Predsjednik Upravnog odbora i Predsjednik Skupštine sukladno Statutu Društva.
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                Ad.2. Za Dopredsjednike Društva izabire se: Stjepan Pereković, OIB: 88069130744.
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                Ad.3. Za Tajnika Društva izabire se: Lana Poljak, OIB:41008595359.
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                Ad.4 .Poslovna adresa Društva u sjedištu Društva u Samoboru je Voćarska 7.
+                            </p>
+                        </li>
                     </ul>
-                </li>
-                <li>
-                    <p>Radno vrijeme:</p>
-                    <p>Ponedjeljak- Subota 8-12 14-18</p>
-                    <p>Adresa; Voćarska 7, Samobor 10430</p>
-                </li>
-            </ul>
-            <p>
-                <ul>
-                    <li>
-                        Aktivnosti
-                        - Edukacije, predavanja, sportske aktivnosti
-                    </li>
-                    <li>
-                        Informiraj se
-                        - Članci, tjedna događanja, zanimljivosti
-                    </li>
-                    <li>
-                        Postavi nam pitanje
-                        - odgovori stručnih osoba
-                    </li>
-                </ul>
-            </p>
+                </div>
+            </div>
+
+            <div class="paragraph-block">
+                <p>
+                    Udruga promovira zdrav način života unatoč specifičnim problemima sa kojima se susreću kronični
+                    bubrežni bolesnici.
+                </p>
+            </div>
+            <div class="table-block">
+                <table>
+                    <tr>
+                        <td>OIB:</td>
+                        <td>53272771004</td>
+                    </tr>
+                    <tr>
+                        <td>IBAN:</td>
+                        <td>HR6524030091121004998</td>
+                    </tr>
+                    <tr class="blank_row">
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Mobitel:</td>
+                        <td><a href="tel:+385951996628">095-199-6628</a></td>
+                    </tr>
+                    <tr>
+                        <td>E-mail:</td>
+                        <td><a href="mailto:UdrugaKBBZ@gmail.com">UdrugaKBBZ@gmail.com</a></td>
+                    </tr>
+                    <tr class="blank_row">
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td rowspan="4">Radno vrijeme:</td>
+                    </tr>
+                    <tr>
+                        <td>Ponedjeljak - Subota</td>
+                    </tr>
+                    <tr>
+                        <td>08 do 12</td>
+                    </tr>
+                    <tr>
+                        <td>14 do 18</td>
+                    </tr>
+                    <tr class="blank_row">
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Adresa:</td>
+                        <td>Voćarska 7, Samobor 10430</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="table-block">
+                <table>
+                    <tr>
+                        <td>Aktivnosti:</td>
+                    </tr>
+                    <tr>
+                        <td>Edukacije, Predavanja, Sportske aktivnosti</td>
+                    </tr>
+                    <tr>
+                        <td>Informirajte se</td>
+                    </tr>
+                    <tr>
+                        <td>Članci, Tjedna događanja</td>
+                    </tr>
+                    <tr>
+                        <td>Postavite nam pitanje stručnim osobama</td>
+                    </tr>
+                </table>
+            </div>
+
         </div>
     </div>
 </div>
