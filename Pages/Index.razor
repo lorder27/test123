@@ -9,24 +9,25 @@
 }
 
 <style>
-    .title {
-        padding: 6rem 0;
-        margin-bottom: 5rem;
-        font-weight: bold;
-        text-align: center;
-        font-weight: 900;
-        font-size: 4rem;
-        background: #cfafba;
-        text-transform: uppercase;
+    .title-block {
+        min-height: 500px;
     }
 
     .branded {
-        color: #8585ff;
-        text-shadow: rgb(0, 0, 0) 2px 2px 3px;
+        text-shadow: black 2px 2px 3px;
     }
 
-    .bg-interchanged {
-        background: #cfafba;
+    .branded-inverted {
+        text-shadow: white 2px 2px 3px;
+    }
+
+    .bg-normal {
+        background: #9CC3D5FF;
+        color: white;
+    }
+
+    .bg-inverted {
+        background: #0063B2FF;
         color: white;
         text-align: center;
         line-height: 1.5rem;
@@ -40,9 +41,9 @@
     .list-block {
         text-align: left;
         margin: 2rem 0;
-        display:flex;
-        justify-content:center;
-        font-size:0.8rem;
+        display: flex;
+        justify-content: center;
+        font-size: 0.8rem;
     }
 
     .table-block {
@@ -59,8 +60,11 @@
     }
 
     .defualt-font {
-        font-family: "Arial Black", Gadget, sans-serif;
+        font-family: "Arial", Gadget, sans-serif;
         font-size: 1rem;
+    }
+    .text-color{
+        color:white !important;
     }
 
     .max-w {
@@ -82,90 +86,62 @@
     }
 </style>
 
-<div class="branded title">
-    <span>
-        Udruga Kroničnih bubrežnih bolesnika
-    </span>
-</div>
-
 <div class="container-fluid defualt-font">
 
-    <div class="row mt-5 mb-5 max-w centered">
-
-        <div class="col-md-6 text-center">
-            <img src="/Resources/Images/logo.svg" width="40%" />
-        </div>
-
-        <div class="col-md-6 mx-auto text-center d-flex align-items-center">
-            <h2 class="branded">
-                Djelujmo zajedno, učimo o sebi, pomažimo drugima.
-            </h2>
-        </div>
-
+    <div class="row p-5 bg-inverted text-center justify-content-center align-items-center title-block">
+        <h1 class="branded">Udruga Kroničnih Bubrežnih Bolesnika</h1>
     </div>
 
+    <div class="row p-5 bg-normal">
+        <div class="row max-w centered">
+            <div class="col-md-6 text-center">
+                <img src="/Resources/Images/logo.svg" width="40%" />
+            </div>
 
+            <div class="col-md-6 mx-auto text-center d-flex align-items-center">
+                <h2 class="branded">
+                    Djelujmo zajedno, učimo o sebi, pomažimo drugima.
+                </h2>
+            </div>
+        </div>
+    </div>
 
-    <div class="row p-5 mt-auto bg-interchanged justify-content-center">
-
+    <div class="row p-5 mt-auto bg-inverted justify-content-center">
         <div class="col max-w text-center">
-
-            <h4 class="branded">
-                Naučimo živjeti bolje uz dijalizu:
-            </h4>
-
-            <ul class="text-center">
-                <li>
-                    Kako konzumirati ukusnu hranu i ne ugroziti sebe
-                </li>
-                <li>
-                    Mogu piti kada želim (no NE koliko želim)
-                </li>
-                <li>
-                    Mogu se osjećati sretnije
-                </li>
-                <li>
-                    Kako biti „fit“ i vježbati kvalitetno
-                </li>
-                <li>
-                    Želim očuvati svoju fistulu / kateter
-                </li>
-                <li>
-                    Kvaliteta života mi je važna
-                </li>
-            </ul>
+            <table class="table table-borderless">
+                <thead class="text-color">
+                    <tr><td><h4 class="branded">Naučimo živjeti bolje uz dijalizu:</h4></td></tr>
+                </thead>
+                <tbody class="text-color">
+                    <tr><td>Kako konzumirati ukusnu hranu i ne ugroziti sebe</td></tr>
+                    <tr><td>Mogu piti kada želim (no NE koliko želim)</td></tr>
+                    <tr><td>Mogu se osjećati sretnije</td></tr>
+                    <tr><td>Kako biti „fit“ i vježbati kvalitetno</td></tr>
+                    <tr><td>Želim očuvati svoju fistulu / kateter</td></tr>
+                    <tr><td>Kvaliteta života mi je važna</td></tr>
+                </tbody>
+            </table>
         </div>
     </div>
 
-    <div class="row p-5 mt-auto justify-content-center">
-
+    <div class="row p-5 mt-auto bg-normal justify-content-center">
         <div class="col max-w text-center">
-
-            <h4 class="branded">
-                Obrasci
-            </h4>
-            <ul class="text-center">
-                <li>
-                    <a href="/Resources/PDF/Tiskanica_br_1_3.pdf">
-                        Zahtjev za priznanje prava na naknadu zbog tjelesnog oštećenja
-                    </a>
-                </li>
-                <li>
-                    <a href="/Resources/PDF/Tiskanica_zahtjeva_br_1_2.pdf">
-                        Zahtjev za priznavanje prava na invalidsku mirovinu / ocjenu radne sposobnosti ili privremenu invalidsku mirovinu
-                    </a>
-                </li>
-                <li>
-                    <a href="https://www.mirovinsko.hr/hr/tiskanice/482" target="_blank">Tiskanice</a>
-                </li>
-                <li>
-                    <a href="https://www.hsuir.hr/vijesti/novi-obrazac-lijecnicke-svjedodzbe-za-ostvarivanje-povlastica-na-hrt-pretplatu" target="_blank">Obrazac za ostvarivanje prava na HRT pretplatu</a>
-                </li>
-            </ul>
+            <table class="table table-borderless">
+                <thead class="text-color">
+                    <tr><th><h4 class="branded">Obrasci</h4></th></tr>
+                </thead>
+                <tbody class="text-color">
+                    <tr><td><a href="/Resources/PDF/Tiskanica_br_1_3.pdf">Zahtjev za priznanje prava na naknadu zbog tjelesnog oštećenja</a></td></tr>
+                    <tr><td><a href="/Resources/PDF/Tiskanica_br_1_3.pdf">Zahtjev za priznanje prava na naknadu zbog tjelesnog oštećenja</a></td></tr>
+                    <tr><td><a href="/Resources/PDF/Tiskanica_zahtjeva_br_1_2.pdf">Zahtjev za priznavanje prava na invalidsku mirovinu / ocjenu radne sposobnosti ili privremenu invalidsku mirovinu</a></td></tr>
+                    <tr><td><a href="https://www.mirovinsko.hr/hr/tiskanice/482" target="_blank">Tiskanice</a></td></tr>
+                    <tr><td><a href="https://www.hsuir.hr/vijesti/novi-obrazac-lijecnicke-svjedodzbe-za-ostvarivanje-povlastica-na-hrt-pretplatu" target="_blank">Obrazac za ostvarivanje prava na HRT pretplatu</a></td></tr>
+                </tbody>
+            </table>
         </div>
     </div>
 
-    <div class="row p-5 mt-auto bg-interchanged justify-content-center">
+    <div class="row p-5 mt-auto bg-inverted justify-content-center">
 
         <div class="col max-w text-center">
             <h4 class="branded">
@@ -179,6 +155,9 @@
             </p>
         </div>
     </div>
-    <CloudSurf.Components.About/>
-    
+
+    <div class="row p-5 bg-normal" style="color:black">
+        <CloudSurf.Components.About />
+    </div>
+
 </div>

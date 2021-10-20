@@ -5,7 +5,20 @@
     <ServiceWorkerAssetsManifest>service-worker-assets.js</ServiceWorkerAssetsManifest>
     <EnableDynamicLoading>true</EnableDynamicLoading>
     <OutputType>exe</OutputType>
+    <BlazorEnableTimeZoneSupport>false</BlazorEnableTimeZoneSupport>
+    <BlazorWebAssemblyPreserveCollationData>false</BlazorWebAssemblyPreserveCollationData>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Components\Homepage\**" />
+    <Compile Remove="Models\**" />
+    <Content Remove="Components\Homepage\**" />
+    <Content Remove="Models\**" />
+    <EmbeddedResource Remove="Components\Homepage\**" />
+    <EmbeddedResource Remove="Models\**" />
+    <None Remove="Components\Homepage\**" />
+    <None Remove="Models\**" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="5.0.11" />
@@ -23,8 +36,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Components\Homepage\" />
-    <Folder Include="Models\" />
+    <BlazorWebAssemblyLazyLoad Include="System.Data.Common.dll"/>
+    <BlazorWebAssemblyLazyLoad Include="System.Private.Xml.dll"/>
+    <BlazorWebAssemblyLazyLoad Include="System.Private.Xml.dll"/>
+    <!--
+    <BlazorWebAssemblyLazyLoad Include="Microsoft.Extensions.Logging.dll"/>
+    <BlazorWebAssemblyLazyLoad Include="Microsoft.AspNetCore.Components.WebAssembly.dll"/>
+    <BlazorWebAssemblyLazyLoad Include="Microsoft.AspNetCore.Components.Web.dll"/>
+    <BlazorWebAssemblyLazyLoad Include="System.IO.Pipelines.dll"/>
+    <BlazorWebAssemblyLazyLoad Include=""/>
+    -->
   </ItemGroup>
 
 </Project>
