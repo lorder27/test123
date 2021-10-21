@@ -1,12 +1,9 @@
-﻿@code{
-    [Parameter]
-    public string CssClass { get; set; } = "";
-}
-
+﻿
 <style>
     .info-block {
         margin: 2rem auto;
         max-width: 700px;
+        min-width: 400px;
     }
 
     .txt-center {
@@ -22,7 +19,7 @@
     <h3 class="branded-inverted">O Nama</h3>
 </div>
 
-<div class="info-block">
+<div class="info-block w-100">
     
     <p>
         Udruga kroničnih bubrežnih bolesnika Zagreb je osnovana 18.08.2021 s ciljem udruživanja pacijenata
@@ -45,7 +42,7 @@
     </p>
 </div>
 
-<div class="info-block">
+<div class="info-block w-50">
     <table class="table table-striped">
         <tr>
             <td>Naše Aktivnosti</td>
@@ -65,7 +62,7 @@
     </table>
 </div>
 
-<div class="info-block">
+<div class="info-block w-25">
     <table class="table table-bordered">
         <thead>
             <tr><th class="txt-center">Članovi osnivačke skupštine</th></tr>
@@ -80,7 +77,7 @@
     </table>
 </div>
 
-<div class="info-block">
+<div class="info-block w-25">
     <table class="table table-bordered">
         <thead>
             <tr><th class="txt-center">Utvrđuje se dnevni red</th></tr>
@@ -94,7 +91,7 @@
     </table>
 </div>
 
-<div class="info-block">
+<div class="info-block w-100">
     <table class="table table-bordered">
         <thead>
             <tr>
@@ -127,5 +124,15 @@
     </table>
 </div>
 
-<BasicInfoBlock />
+<BasicInfoBlock  
+                OIB="53272771004"
+                IBAN="HR6524030091121004998"
+                Telephone="+385951996628"
+                TelephoneFormated="095 / 199 - 6628"
+                Email="UdrugaKBBZ@gmail.com"
+                WorkDays="Pon - Sub"
+                WorkHours1="08-12"
+                WorkHours2="14-18"
+                Adress="Voćarska 7, Samobor 10430"
+                />
 

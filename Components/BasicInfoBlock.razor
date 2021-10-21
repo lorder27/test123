@@ -1,5 +1,109 @@
-﻿<div class="info-block">
-    <table class="table table-bordered w-100">
+﻿@code{
+    [Parameter]
+    public string OIB { get; set; }
+    [Parameter]
+    public string IBAN { get; set; }
+    [Parameter]
+    public string Telephone { get; set; }
+    [Parameter]
+    public string TelephoneFormated { get; set; }
+    [Parameter]
+    public string Email { get; set; }
+    [Parameter]
+    public string Adress { get; set; }
+    [Parameter]
+    public string WorkDays { get; set; }
+    [Parameter]
+    public string WorkHours1 { get; set; }
+    [Parameter]
+    public string WorkHours2 { get; set; }
+}
+
+<div class="info-block text-center w-100">
+    <div class="container-fluid p-2">
+
+        <div class="row border p-2">
+            <div class="col">
+                <div>
+                    <strong>OIB</strong>
+                </div>
+                <div class="d-inline-block">
+                    @OIB
+                </div>
+            </div>
+            <div class="col">
+                <div>
+                    <strong>IBAN</strong>
+                </div>
+                <div>
+                    @IBAN
+                </div>
+            </div>
+        </div>
+
+        <div class="row border p-2">
+            <div class="col">
+                <div>
+                    <strong>Mobitel</strong>
+                </div>
+                <div>
+                    <a href="tel:@Telephone">@TelephoneFormated</a>
+                </div>
+            </div>
+            <div class="col">
+                <div>
+                    <strong>Email</strong>
+                </div>
+                <div>
+                    <a href="mailto:UdrugaKBBZ@gmail.com">@Email</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row border p-2">
+            <div class="col">
+                <div>
+                    <strong>Radno vrijeme</strong>
+                </div>
+            </div>
+        </div>
+
+        <div class="row border p-2">
+            <div class="col">
+                <div>
+                    <strong>@WorkDays</strong>
+                </div>
+            </div>
+        </div>
+
+        <div class="row border p-2">
+                <div class="col">
+                    <div>
+                        <strong>@WorkHours1</strong>
+                    </div>
+                </div>
+                <div class="col">
+                    <div>
+                        <strong>@WorkHours2</strong>
+                    </div>
+                </div>
+        </div>
+
+        <div class="row border p-2">
+            <div class="col">
+                <div>
+                    <strong>Adresa</strong>
+                </div>
+                <div>
+                   @Adress
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*<div class="info-block">
+    <table class="table table-bordered">
         <tr>
             <td><strong>OIB</strong></td>
             <td>53272771004</td>
@@ -16,7 +120,7 @@
             <td class="txt-center" colspan="4"><strong>Radno vrijeme</strong></td>
         </tr>
         <tr>
-            <td class="txt-center td-vertical-middle" rowspan="2" colspan="2">Ponedjeljak - Subota</td>
+            <td class="txt-center td-vertical-middle" row border p-2span="2" colspan="2">Ponedjeljak - Subota</td>
             <td class="txt-center" colspan="2">08 do 12</td>
         </tr>
         <tr>
@@ -28,7 +132,7 @@
             <td colspan="2">Voćarska 7, Samobor 10430</td>
         </tr>
     </table>
-</div>
+</div>*@
 
 
 
