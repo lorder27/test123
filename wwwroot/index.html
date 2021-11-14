@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="hr">
 
 <head>
-    <meta charset="utf-8" />
+    <meta http-equiv="content-type" content="text/html" charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>UKBBZ</title>
+    <meta name="description" content="Djelujmo zajedno, učimo o sebi, pomažimo drugima." />
+    <title>Udruga Kroničnih Bubrežnih Bolesnika</title>
     <base href="/" />
 
     <link href="CloudSurf.styles.css" rel="stylesheet" />
@@ -19,7 +20,34 @@
 </head>
 
 <body>
-    <div id="app">Loading...</div>
+    <div id="app">
+        <div class="container-fluid defualt-font">
+
+            <div class="row p-5 bg-inverted text-center justify-content-center align-items-center title-block">
+                <h1 class="branded">Udruga Kroničnih Bubrežnih Bolesnika</h1>
+            </div>
+
+            <div class="row p-5 bg-normal">
+                <div class="row max-w centered">
+                    <div class="col-md-6 text-center">
+                        <img src="/Resources/Images/logo.svg" width="40%" />
+                    </div>
+
+                    <div class="col-md-6 mx-auto text-center d-flex align-items-center">
+                        <h2 class="branded">
+                            Djelujmo zajedno, učimo o sebi, pomažimo drugima.
+                        </h2>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row p-5 justify-content-center">
+                <div class="col-md-6 text-center">
+                    <h3>Stranica se učitava, molimo pričekajte.</h3>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div id="blazor-error-ui">
         An unhandled error has occurred.
@@ -28,6 +56,7 @@
     </div>
     <script src="_framework/blazor.webassembly.js"></script>
     <script>navigator.serviceWorker.register('service-worker.js');</script>
+    <script src="js/animations.js"></script>
 </body>
 
 </html>

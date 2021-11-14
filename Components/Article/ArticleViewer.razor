@@ -1,0 +1,74 @@
+﻿<div>
+    <div class="btn-group m-2" role="group" aria-label="Basic example">
+        <button type="button" class="btn btn-secondary" @onclick="EventCallback"><span class="oi oi-chevron-left"></span> Svi tekstovi</button>
+    </div>
+
+    <div class="m-5 p-5">
+        <h3 style="margin: 0 auto; margin-bottom:2rem; text-align:center">@Data.Title</h3>
+
+        <div class="mt-2">
+            @foreach (Models.ArticleObject.Section section in Data.Sections)
+            {
+                <h4 style="margin-left: 2rem; margin-bottom:2rem; margin-top:2rem;">@section.Title</h4>
+                @foreach (string paragraph in section.Paragraphs)
+                {
+                    if (paragraph.Contains("<b>"))
+                    {
+                        <p><b>@paragraph.Replace("<b>", "")</b></p>
+                    }
+                    else if (paragraph.Contains("<li>"))
+                    {
+                        <p><ul><li>@paragraph.Replace("<li>", "")</li></ul></p>
+                    }
+                    else if (paragraph.Contains("<i>"))
+                    {
+                        <p><i>@paragraph.Replace("<i>", "")</i></p>
+                    }
+                    else if (paragraph.Contains("<em>"))
+                    {
+                        <p><em>@paragraph.Replace("<em>", "")</em></p>
+                    }
+                    else if (paragraph.Contains("<mark>"))
+                    {
+                        <p><mark>@paragraph.Replace("<mark>", "")</mark></p>
+                    }
+                    else if (paragraph.Contains("<small>"))
+                    {
+                        <p><small>@paragraph.Replace("<small>", "")</small></p>
+                    }
+                    else if (paragraph.Contains("<sub>"))
+                    {
+                        <p><sub>@paragraph.Replace("<sub>", "")</sub></p>
+                    }
+                    else if (paragraph.Contains("<sup>"))
+                    {
+                        <p><sup>@paragraph.Replace("<sup>", "")</sup></p>
+                    }
+                    else
+                    {
+                        <p>@paragraph</p>
+                    }
+                }
+            }
+        </div>
+    </div>
+
+    <div class="btn-group m-2" role="group" aria-label="Basic example">
+        <button type="button" class="btn btn-secondary" @onclick="EventCallback"><span class="oi oi-chevron-left"></span> Svi tekstovi</button>
+    </div>
+</div>
+
+
+@code {
+    [Parameter]
+    public Models.ArticleObject Data { get; set; }
+
+    [Parameter]
+    public EventCallback EventCallback { get; set; }
+
+        protected override void OnInitialized()
+        {
+            base.OnInitialized();
+        
+        }
+}

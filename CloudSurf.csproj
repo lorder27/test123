@@ -11,13 +11,9 @@
 
   <ItemGroup>
     <Compile Remove="Components\Homepage\**" />
-    <Compile Remove="Models\**" />
     <Content Remove="Components\Homepage\**" />
-    <Content Remove="Models\**" />
     <EmbeddedResource Remove="Components\Homepage\**" />
-    <EmbeddedResource Remove="Models\**" />
     <None Remove="Components\Homepage\**" />
-    <None Remove="Models\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -36,9 +32,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <BlazorWebAssemblyLazyLoad Include="System.Data.Common.dll"/>
-    <BlazorWebAssemblyLazyLoad Include="System.Private.Xml.dll"/>
-    <BlazorWebAssemblyLazyLoad Include="System.Private.Xml.dll"/>
+    <BlazorWebAssemblyLazyLoad Include="System.Data.Common.dll" />
+    <BlazorWebAssemblyLazyLoad Include="System.Private.Xml.dll" />
+    <BlazorWebAssemblyLazyLoad Include="System.Private.Xml.dll" />
     <!--
     <BlazorWebAssemblyLazyLoad Include="Microsoft.Extensions.Logging.dll"/>
     <BlazorWebAssemblyLazyLoad Include="Microsoft.AspNetCore.Components.WebAssembly.dll"/>
@@ -46,6 +42,10 @@
     <BlazorWebAssemblyLazyLoad Include="System.IO.Pipelines.dll"/>
     <BlazorWebAssemblyLazyLoad Include=""/>
     -->
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\Resources\Icons\" />
   </ItemGroup>
 
 </Project>

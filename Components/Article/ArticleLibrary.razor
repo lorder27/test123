@@ -1,0 +1,393 @@
+﻿@page "/Edukacija"
+@inject IJSRuntime JS
+
+@if (articles != null)
+{
+    <div id="divArticleList" class="d-flex flex-wrap justify-content-around">
+
+        @if (ActiveArticleObject != null)
+        {
+            <ArticleViewer Data="@ActiveArticleObject" EventCallback="CloseArticle" />
+        }
+        else
+        {
+            @foreach (Models.ArticleObject article in articles)
+            {
+                <div class="card m-3 shadow" style="width:14rem" @onclick="() => ExpandCard(article)">
+                    <img class="card-img-top img-fluid" src="@article.ImgSrc" alt="" />
+                    <div class="card-body">
+                        <h5 class="card-title text-center">@article.Title.ToUpper()</h5>
+                        <p class="card-text">@article.Summary</p>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+}
+else
+{
+    <p> Loading...</p>
+}
+@code {
+    private Models.ArticleObject ActiveArticleObject;
+
+    private List<Models.ArticleObject> articles = new List<Models.ArticleObject>();
+
+    protected override Task OnInitializedAsync()
+    {
+        return Task.Run(() => InitArticles());
+    }
+
+    private void InitArticles()
+    {
+        Models.ArticleObject article = new Models.ArticleObject();
+
+        #region Tjelesna Aktivnost, Kvaliteta života i psihičko zdravlje
+        article.Title = "TJELESNA AKTIVNOST, KVALITETA ŽIVOTA I PSIHIČKO ZDRAVLJE KOD BOLESNIKA NA DIJALIZI";
+        article.Summary = "";
+        article.ImgSrc = "/Resources/Images/FitnessStockImage.jpg";
+        article.Sections.Add(new Models.ArticleObject.Section()
+        {
+            Title = "",
+            Paragraphs = new string[] {
+                     "Bolesnici sa završnim stadijem kronične bubrežne bolesti kojima se bubrežna funkcija nadomješta dijalizom imaju smanjenu sposobnost za bavljenje tjelesnim aktivnostima u odnosu na populaciju ljudi koji nemaju bubrežnu bolest i ne liječe se dijalizom. Tjelesna aktivnost je višestruko korisna za fizičko zdravlje bolesnika na dijalizi u smislu da poboljšava rad kardiovaskularnog sustava, snižava krvni tlak, povećava mišićnu snagu, poboljšava stanje uhranjenosti i bolje podnošenje postupaka hemodijalize. Tjelesna aktivnost također poboljšava i psihičko zdravlje, u smislu da smanjuje negativne emocije kao što su anksioznost i depresija te čini da se bolesnici na dijalizi osjećaju bolje, uz  poboljšanje socijalne interakcije.",
+                     "Istraživanja su pokazala da aerobne vježbe mogu poboljšati fizičko i mentalno zdravlje te produžiti život bolesnika na dijalizi. Naime, pokazalo se da su bolesnici koji su prakticirali aerobne vježbe bili manje depresivni, imali bolju kvalitetu života te su imali 40 posto manji rizik od smrtnog ishoda. Vježbe za povećanje snage i fleksibilnosti nisu imale isti učinak po zdravlje dijaliziranih bolesnika kao i aerobne vježbe. Prije početka tjelovježbe potrebno je procijeniti kardiovaskularni status te status lokomotornog sustava svakog bolesnika. Jednostavna šetnja u trajanju 15-30 minuta dnevno, tri ili više puta tjedno, svakako se preporučuje kod bolesnika na dijalizi. Proces tjelovježbe treba započeti polako i postupno, a zatim manje naporna opterećenja možemo stupnjevati. U obzir dolazi i vožnja biciklom pola sata – sat vremena po ravnom te sobni bicikl 10-20 minuta dnevno. U slučajevima ekstremnih vremenskih prilika, npr. visokih temperatura ili vlage, preporučuje se vježbanje u klimatiziranom prostoru. Ako bolesnik na dijalizi ima dijagnosticirane teže pridružene bolesti, npr. bolesti srca i krvnih žila, bolesti lokomotornog sustava, aktivnu malignu bolest i sl., teže i zahtjevnije vrste tjelovježbe se ne preporučuju. Zbog navedenog je potrebno od strane medicinskog osoblja (medicinskih sestara/tehničara i liječnika nefrologa) procijeniti individualne mogućnosti bavljenjem tjelesnom aktivnošću bolesnika na dijalizi te ih poticati na uključivanje u istu. Iako su prednosti vježbanja za bolesnike na dijalizi od ranije poznate, mnogi bolesnici se ne bave redovito tjelovježbom zbog nedostatka motivacije s jedne strane, a s druge strane i zbog nedovoljne informiranosti o važnostima redovite tjelovježbe.",
+                     "Mjerenje kvalitete života povezane sa zdravljem dio je općeg koncepta kvalitete života. Prema istraživanjima, u bolesnika na dijalizi kvaliteta života je značajno niža u odnosu na opću populaciju. U bolesnika na dijalizi niži je zbroj kvalitete života i fizičkog zdravlja te socijalnih odnosa i okoline, kao i zbroj ukupnog mentalnog zdravlja. Depresija se javlja u 20-30 % pacijenata na dijalizi, uobičajena je u kroničnoj bubrežnoj bolesti i može biti zaslužna za osjećaj umora i sniženu kvalitetu života. Vrlo često se previdi u bolesnika na dijalizi, a i nedovoljno se liječi, moguće i zbog slabe adherencije na terapiju, a i zbog složenosti kompletnog liječenja tih bolesnika. Depresija općenito ima negativan utjecaj na kvalitetu života i smatra se faktorom koji značajno utječe na morbiditet i mortalitet u bolesnika na dijalizi. Uz depresiju se kod bolesnika na dijalizi često javlja i anksioznost, kao odgovor na promijenjeno stanje zdravlja i promjenu načina života. Bolesnici koji se liječe dijalizom često imaju negativne misli i bojazan od samog postupka dijalize, povlače se u sebe i kao posljedica se javlja anksioznost te postaju asocijalni, uz narušavanje odnosa s okolinom, uključujući svoje prijatelje, članove obitelj i medicinske djelatnike koji su s njima svakodnevno u kontaktu. Važno je svakom bolesniku kod kojeg se započinje liječenje bubrežne bolesti dijalizom objasniti što je sama dijaliza, na koji se način provodi i što to znači za njih i njihovo zdravlje u budućnosti. Bolesnici većinom teško prihvaćaju svoju dijagnozu, jer liječenje dijalizom uzrokuje znatne promjene u njihovom dotadašnjem načinu života. Mijenjaju se svakodnevne uvriježene aktivnosti, prije svega način prehrane, unos tekućine, psihofizički integritet i često bivaju stigmatizirani u društvu, što posljedično umanjuje njihov raniji položaj, karijeru, dignitet i samopouzdanje. Zbog svega navedenog u procesu liječenja bolesnika na dijalizi često je potrebno uključiti pomoć i podršku psihologa, a po potrebi i psihijatra.",
+                     "Povećanje kvalitete života bolesnika na dijalizi usmjereno je prije svega na rješavanje zdravstvenih komplikacija u smislu pothranjenosti, anemije, koštano - mišićnih poremećaja, nesanice, depresije, anksioznosti, i nedostatka tjelesne aktivnosti te drugih mogućih pridruženih bolesti. Uspješno rješavanje ovih stanja poboljšava kvalitetu života i ishode u bolesnika na dijalizi. Nutritivni deficit čest je problem kod bolesnika na dijalizi te povećava rizik smrtnosti. Uz obiteljskog liječnika i osoblje dijalize u proces liječenja često treba uključiti i nutricioniste/dijetetičare specijalizirane za potrebe bubrežnih bolesnika. Anemija je podloga za snižene kognitivne sposobnosti i mentalnu aktivnost, slabost, umor, smanjenu izdržljivost i druge simptome koji se odnose na smanjenu sposobnost za obavljanje aktivnosti iz svakodnevnog života, što rezultira smanjenom kvalitetom života. Nesanica vodi umoru i smanjenju kvalitete života, a nesanici doprinosi kronična bol, apneja u spavanju, sindrom nemirnih nogu i slične pridružene kronične bolesti. Kognitivna oštećenja povezana su s lošijom kvalitetom života, rizikom hospitalizacije i mortalitetom, a uobičajena su pojava u bolesnika tretiranih dijalizom, posebno u domeni orijentacije, pažnje i izvršnih funkcija.",
+                     "Dobra klinička praksa u liječenju bolesnika na dijalizi zasniva se na individualnom pristupu i poboljšanju kvalitete života. U svakodnevnoj praksi, korištenjem upitnika o kvaliteti života pacijenata na dijalizi povećala bi se svijest o iznimno važnom segmentu skrbi za dijalizirane bolesnike, jer je u ovih bolesnika kvaliteta života mjera ishoda liječenja.",
+                     "U radu s bolesnicima na dijalizi vrlo je važan kvalitetan odnos između bolesnika i medicinske sestre/tehničara te liječnika nefrologa. Strah kod ovih bolesnika gotovo je uvijek prisutan, bez obzira koliko se dugo dijaliziraju te je u svakom bolesniku potrebno pobuditi sigurnost i međusobno povjerenje. Human odnos prema bolesniku trebao bi dominirati nad suvremenom tehnologijom, koja svojom sve češćom uporabom prijeti da se zaboravi osobnost bolesnika. Stalna edukacija zdravstvenih djelatnika, bolesnika i članova njihovih obitelji te međusobna suradnja je vrlo važan faktor poboljšanja kvalitete života bolesnika na dijalizi, a samim time i njihovog psihofizičkog stanja."
+                    }
+        });
+        articles.Add(article);
+        #endregion
+
+        #region Transplantacija bubrega
+        article = new Models.ArticleObject();
+        article.Title = "TRANSPLANTACIJA BUBREGA";
+        article.Summary = "";
+        article.ImgSrc = "/Resources/Images/KidneyStockImage.jpg";
+
+        article.Sections.Add(new Models.ArticleObject.Section()
+        {
+            Title = "Nikolina Bašić-Jukić",
+            Paragraphs = new string[]{
+                "Kada se razvije završni stadij KBB bubrežnu se funkciju može nadomjestiti hemodijalizom, peritonealnom dijalizom ili transplantacijom bubrega. Odabir metode ovisi o obilježjima bolesnika, njegovom osobnom odabiru, ali i o mogućnostima koje pojedina zemlja ima u pružanju određenog modaliteta liječenja. Svaka metoda ima svoje prednosti i nedostatke koje je potrebno predočiti bolesniku i pomoći mu prilikom odabira metode. Transplantacija bubrega se smatra najboljom metodom nadomještanja bubrežne funkcije. Povezuje se s boljom kvalitetom života, ali i značajnim produljujenjem životnog vijeka u usporedbi s dijalizom."
+            }
+        });
+        article.Sections.Add(new Models.ArticleObject.Section()
+        {
+            Title = "Kontraindikacije za transplantaciju",
+            Paragraphs = new string[]
+            {
+                "Kontraindikacije za transplantaciju uključuju aktivnu infekciju, zloćudnu bolest, teške neispravljive srčanožilne bolesti, teške bolesti pluća, bolesti s očekivanim preživljenjem kraćim od dvije godine, psihozu koja se ne može kontrolirati lijekovima, ali i nesuradljivost bolesnika.",
+                   "Predtransplantacijskom obradom se pokušava otkriti i riješiti eventualno postojeće probleme kako se ne bi životno ugrozilo bolesnika nakon operativnog zahvata i izlaganja imunosupresijskoj terapiji.",
+                   "Osim standardizirane obrade, svakom se bolesniku pristupa individualno, te se obrada proširuje prema specifičnim individualnim obilježjima bolesnika. "
+                                                                                                        }
+        });
+        article.Sections.Add(new Models.ArticleObject.Section()
+        {
+            Title = "Preemptivna transplantacija",
+            Paragraphs = new string[]
+            {
+                "Bolesnik ne mora biti liječen dijalizom da bi se podvrgao transplantaciji bubrega, već transplanatcija može biti prva nadomjesna bubrežna terapija. U takvim slučajevima govorimo o tzv. preemptivnoj transplantaciji. Ukoliko bolesnik ima živog darovatelja bubrega, takav se zahvat može planirati i učiniti u trenutku kada se procijeni da bi bolesnik trebao započeti s nadomještanjem bubrežne funkcije. Preemptivna je transplantacija moguća i s moždano-mrtve osobe, ali rjeđe obzirom da bolesnici nemaju bodove koji se dobivanju za vrijeme provedeno na dijalizi. Preemptivnom se transplantacijom izbjegava potreba za kreiranjem pristupa za dijalizu (ugradnja peritonealnog katetera ili konstrukcija arteriovenske fistula), izbjegava se kontakt sa stranim materijalima na dijalizi, te se u značajnoj mjeri poboljšava preživljenje. Dosadašnja istraživanja pokazuju da se najbolji rezultati transplantacije postižu upravo ako je transplantacija učinjena prije ili kratko vrijeme nakon početka liječenja dijalizom."
+                                                                                                        }
+        });
+        article.Sections.Add(new Models.ArticleObject.Section()
+        {
+            Title = "Multiorganska transplantacija",
+            Paragraphs = new string[]
+            {
+                "Pojmom multiorganskih transplantacija su obuhvaćene istovremene transplantacije dva ili više organa. Indicirane su kod razvoja završnog stadija zatajivanja funkcije organa. Bubreg se najčešće presađuje u kombinaciji s gušteračom, jetrom ili srcem. Vrlo se rijetko izvode tzv. multivisceralne transplantacije, u kojima se pojedinom bolesniku presađuje nekoliko visceralnih organa (jetra, crijevo, želudac, bubreg i gušterača).",
+                  "Najšešća multiorganska transplantacija je simultana transplantacija bubrega i gušterače (SPKT). Indicirana je u bolesnika sa šećernom bolesti i završnim stadijem KBB. Iako se prevenstveno primjenjuje u bolesnika s tipom I šećerne bolesti, odlični se rezultati postižu i u bolesnika s tipom II šećerne bolesti. Prepreka učestalijoj uporabi SPKT u tipu II šećerne bolesti je prije svega nedostatak darovatelja. Simultana transplantacija bubrega i jetre je, osim kod zatajivanja funkcije oba organa (zbog primjerice policistične bolesti), indicirana i u bolesnika koji imaju primarni poremećaj u jetri (poput hiperoksalurije tip I) kada bi transplantacija samog bubrega rezultirala brzim gubitkom presađenog organa uslijed osnovne bolesti."
+                                                                                                        }
+        });
+        article.Sections.Add(new Models.ArticleObject.Section()
+        {
+            Title = "Imunosupresijska terapija",
+            Paragraphs = new string[]
+            {
+                "Imunosupresijskom terapijom se potiskuje imunološki sustav domaćina sa ciljem sprječavanja odbacivanja presađenog organa. Primjena imunosupresijske terapije je potrebna tijekom čitavog poslijetransplantacijskog tijeka, pa i nakon povratka na dijalizu kod zatajivanja funkcije presatka kada se potpuno i polagano ukida. Postojanje različitih imunosupresiva omogućuje individualizaciju imunosupresijske terapije ovisno o imunološkom riziku, individualnim obilježjima bolesnika i eventualnom razvoju nuspojava liječenja.",
+                "Imunosupresijsku terapiju nakon transplantacije bubrega općenito dijelimo na tzv. indukcijsku terapiju i terapiju održavanja."
+                                                                                }
+        });
+        article.Sections.Add(new Models.ArticleObject.Section()
+        {
+            Title = "Indukcijska terapija",
+            Paragraphs = new string[]
+            {
+                "Indukcijska terapija se primjenjuje neposredno prije ili tijekom same transplantacije bubrega. Primjenjuju se različita protutijela kojima je cilj pojačanje imunosupresijskog djelovanja, a daju se i više doza lijekova koji se i inače koriste u terapiji održavanja. Protutijela se dijele na monoklonalna i poliklonalna.",
+                "Od poliklonalnih se protutijela uglavnom koriste kunićja poliklonalna protutijela (imunoglobulin protiv T-limfocita, kunićji, za humanu primjenu i kunićji imunoglobulin protiv ljudskih timocita). Prvenstveno se koriste u prevenciji akutnih odbacivanja u bolesnika s visokim imunološkim rizikom kao što su primatelji organa s darovatelja po proširenim kriterijima, darovatelja s nekucajućim srcem, bolesnika s odgođenom funkcijom presatka, senzibiliziranih bolesnika ili kod ponavljanih transplantacija.",
+                "Monoklonalna protutijela mogu biti deplecijska ili nedeplecijska. U deplecijska monoklonalna protutijela se ubrajaju alemtuzumab i OKT3 koji se više ne koristi, dok se od nedeplecijskih monkoklonalnih protutijela koristi baziliksimab."
+                                                                                                    }
+        });
+
+        article.Sections.Add(new Models.ArticleObject.Section()
+        {
+            Title = "Terapija održavanja",
+            Paragraphs = new string[]
+            {
+                "Kortikosteroidi se dugo koriste u transplantacijskoj medicini i imaju široki spektar djelovanja na imunološki sustav uz odličnu učinkovitost, ali se njihovom dugotrajnom uporabom u većine bolesnika razvija čitav niz različitih nuspojava koje je potrebno dobro poznavati i pokušati ih prevenirati. Kortikosteroidi se koriste i u liječenju akutnih odbacivanja u tzv. bolus terapiji kada se primjenjuju visoke doze.",
+                "Mikofenolat  je visoko učinkovit i gotovo je posve istisnuo azatioprin iz imunosupresijskih protokola. Najčešće izaziva nuspojave od strane probavnog sustava koje su obično prolazne i većinom ne zahtijevaju prekid liječenja. Treba naglasiti da je mikofenolat štetan za plod zbog čega se u bolesnica koje planiraju trudnoću barem 6 tjedana ranije mora zamijeniti azatioprinom.",
+                "Azatioprin je imunosupresiv koji je desetljećima predstavljao osnovu imunosupresijskih protokola. Obično se dobro podnosi, ali zbog svog mehanizma djelovanja često uzrokuje smanjivanje broja različitih krvnih stanica. Povećava sklonost infekcijama, te zloćudnim tumorima.",
+                "Inhibitori kalcijneurina predstavljaju srž imunosupresijskih protokola. Posljednjih godina takrolimus potiskuje ciklosporin obzirom na bolje imunosupresijsko djelovanje. Iako strukturno različiti, CyA i takrolimus dijele mehanizam djelovanja, ali i brojne zajedničke nuspojave.",
+                "U skupinu mTOR inhibitora ubrajaju se sirolimus i everolimus. mTOR inhibitori nisu štetni za bubreg, ali u višim dozama mogu otežati cijeljenje rane i poticati formiranje limfocela (najvjerojatnije uslijed kočenja proliferacije fibroblasta). Često izazivaju proteinuriju i periferne edeme.",
+                "Rjeđe se mogu koristiti i drugi imunopsupresivi poput rituksimaba, belatacepta,bortezomiba,  imunoglobulina ili ekulizumaba. "
+                                        }
+        });
+
+        articles.Add(article);
+        #endregion
+
+        #region Vaskularni pristup kod pacijenata na kroničnoj hemodijalizi
+        article = new Models.ArticleObject();
+        article.Title = "VASKULARNI PRISTUP KOD PACIJENATA NA KRONIČNOJ HEMODIJALIZI";
+        article.Summary = "";
+        article.ImgSrc = "/Resources/Images/vascular.jpg";
+        article.Sections.Add(
+        new Models.ArticleObject.Section()
+        {
+            Title = "ARTERIOVENSKA FISTULA (AVF)",
+            Paragraphs = new string[]
+            {
+                    "Arteriovenska fistula je direktni spoj između arterije i vene. Formira se kiruškim putem na podlaktici ili na nadlaktici najčešće nedominantne ruke. AVF služi kao krvožilni pristup za provođenje kronične hemodijalize, te je preferirani pristup upravo radi toga što se punktira iglama (fistuline) nakon čega rana zacijeli, a pacijent se može vratiti uobičajenom životu. Ono što je važno naglasiti je da se prvo treba adekvatno procijeniti da li je pacijent pogodan za kreiranje AVF, te prije samog kreiranja AVF potrebno učiniti ultrazvuk srca i color doppler krvnih žila ruku. Sam kirurški zahvat traje kratko, ukupna hospitalizacija traje jedan dan, te nije potrebna opća anestezija.Uobičajeno nakon kreiranja arteriovenske fistule, pacijent osjeti strujanje „thrill“ na ruci na kojoj je formirana fistula.",
+                    "Kada nefrolog primjeti da je došlo do pogoršanja bubrežne funkcije, te da se  bubrežna funkcija nepovratno kvari, kad je GFR 15ml/min, započne se sa kreiranjem arteriovenske fistule. Jednom kad je kreirana, fistuli treba oko 6 tjedana da „sazrije“ kako bi se mogla punktirati. Za bolje sazrijevanje fistule, potrebno je vježbati ruku npr stiskanjem teniske loptice. Također, važno je napomenuti da ukoliko je pacijent primljen u hitnu službu gdje osoblje ne zna da ima AVF na ruci, da se osoblju treba za svaki slučaj napomenuti da se iz te ruke krv ne smije vaditi, te da krvni tlak treba mjeriti na drugoj ruci.",
+                    "Arteriovenska fistula najpogodniji je dijalizni pristup za pacijenta jer se nalazi ispod kože i ne treba brinuti kupa li se u bazenu, ne treba imati nikakve posebne brige oko higijene, te vodi normalan i uobičajen život uz redovite odlaske u dijalizni centar. ",
+                    "Ukoliko s vremenom dođe do disfunkcije, moguće ju je pokušati reparirati, bilo kirurškim, bilo endovaskularnim pristupom, a također je moguće pokušati kreirati fistulu na nekom novom mjestu.",
+                    "Ako je pacijent kandidat za transplantaciju bubrega, nakon što bubrežni presadak preuzme funkciju, te postupci hemodijalize nisu više potrebni, fistulu je moguće zatvoriti.",
+                                    }
+        });
+        article.Sections.Add(
+        new Models.ArticleObject.Section()
+        {
+            Title = "Trajni dijalizni kateter",
+            Paragraphs = new string[]
+            {
+                "Ukoliko zbog nekih razloga nije moguće ugraditi arteriovensku fistulu, nefrolog se može odlučiti za ugradnju trajnog dijaliznog katetera radi osiguranja vaskularnog pristupa za dijalizu. Postoje dvije vrste katetera, Hickmannov kateter i Tessio kateter. Oba vrše jednake funkcije i jednako su učinkoviti kao dijalizni pristup, jedina razlika je što je Hickmannov kateter iz jednog dijela, a Tessio ima 2 lumena i 2 izlazišta. Oba katetera ugrađuju se na isti način. Prije prijema u bolnicu radi ugradnje TDK, važno je procijeniti ima li pacijent neku infekciju. Ukoliko ima infekciju, ugrađuje se privremeni dijalizni kateter, te se primjenjuje antimikrobna terapija, a po sanaciji infekta ugrađuje se trajni dijalizni kateter. Preferirano mjesto ugradnje je unutarnja jugularna vena, na lijevoj ili desnoj strani vrata, a samo izlazište je na prsištu, te se nalazi ispod odjeće i nije ga moguće vidjeti ispod majice ili košulje. Kateter se postavlja u lokalnoj anestziji, te je pacijent pri svijesti čitavim tijekom postupka. Jednom kad je postavljen, slijedi rtg snimanje radi verifikacije položaja katetera. Pravilno postavljen kateter nalazi se na ulazištu gornje ili donje šuplje vene u desno srce. Kateter ima svoj luk, a jednom kada „cuff“ sraste s potkožnim tkivom, moguće je odstraniti šave, a pacijent se tada može normalno tuširati. Kupanje u kadi i u bazenu nije preporučljivo jer se u stajaćim vodama mogu naći bakterije koje mogu prouzročiti infkeciju izlazišta, pa čak i  tunela katetera. Pacijent se može kupati u moru, ali nije preporučljivo kupati se na plažama gdje ima puno kupača. Osoblje u dijaliznom centru redovito vodi brigu, te upozrava nefrologa o stanju izlazišta katetera. ",
+                "Ukoliko pacijent postane febrilan, potrebno je učiniti mikrobiološku obradu, te započeti antimikrobnu terapiju. Opasno stanje je pojava kateter sepse, te treba voditi računa da se radi o stranom tijelu u organizmu, a strano tijelo posebno je prijemčljivo za mikrobe, te može doći do formiranja biofilma na samom kateteru. Ukoliko se to dogodi, trajni dijalizni kateter potrebno je odstraniti, postaviti privremeni do sanacije infekta, pa nakon toga planirati ugradnju trajnog dijaliznog katetera. Ovjde je važno napomenuti da se kateter smije primjenjivati jedino i isključivo u svrhu dijalize. Na dijalizni kateter ne smije se davati nikakva terapija, a njime jedino može baratati osoblje s dijalize. "
+                                    }
+        });
+
+
+
+        articles.Add(article);
+        #endregion
+
+        #region Važnost uzimanja ljekova
+        article = new Models.ArticleObject();
+        article.Title = "Važnost uzimanja lijekova kod pacijenata sa kroničnom bubrežnom bolesti i na hemodijalizi";
+        article.Summary = "";
+        article.ImgSrc = "/Resources/Images/meds.jpg";
+
+        article.Sections.Add(new Models.ArticleObject.Section()
+        {
+            Title = "",
+            Paragraphs = new string[]
+            {
+                "U terapiji pacijenata sa kroničnom bubrežnom bolesti i na dijalizi primjenjuje se izrazito velik broj različitih lijekova koji često imaju nuspojave što znatno smanjuje suradljivost. Svrha ovog edukativnog materijala je da Vam osigura uvid u to zašto su svi lijekovi koji su Vam propisani bitni i imaju ulogu u produženju života i smanjenju broja teških oboljenja u budućnosti (pojave srčanih udara, moždanih udara, bolesti kosti) i na taj način u konačnici podižu Vašu kvalitetu života.",
+                "Budući da bubreg ima brojne druge uloge u organizmu osim izlučivanja mokraće svaku tu pojedinu funkciju potrebno je nadomjestiti određenom terapijom kako bi tijelo funkcioniralo što bolje.",
+
+                                }
+        });
+        article.Sections.Add(new Models.ArticleObject.Section()
+        {
+            Title = "Eritropoetin",
+            Paragraphs = new string[]
+            {
+                "Eritropoetin je hormon koji proizvode zdravi bubrezi kako bi potaknuli koštanu srž na proizvodnju crvenih krvnih stanica (eritrocita).  Eritrociti u tijelu prenose kisik do tkiva i ako ih nema dovoljno tkiva „pate“- takvo stanje zove se anemija. Svaka osoba različito tolerira anemiju. Mogu se javiti umor, nemogućnost koncentracije, smetnje pamćenja, osjećaj preskakanja srca, zaduha u naporu, a kod ljudi sa bolestima srčanih krvnih žila koji su anemični se mogu javljati i bolovi u prsima u naporu. Sintetski eritropoetin proizveden je u laboratorijskim uvjetima i djeluje slično kao prirodni hormon koji izlučuju zdravi bubrezi. Može se primjenjivati venski ili potkožno. Potrebnu dozu i učestalost doziranja eritropoetina određuje Vaš nefrolog na temelju nalaza broja eritrocita i hemoglobina. Učestalost primjene eritropoetina ovisi o vrsti eritropoetina- kratkodjelujući (npr. Binocrit i Neorecormon) najčešće se primjenjuju 3x tjedno, srednjedugodjelujući (npr. Aranesp) se najčešće primjenjuju jednom tjedno do jednom u 2 tjedna, a dugodjelujući (npr. Mircera) se najčešće primjenjuju jednom mjesečno. S obzirom da se kod nekih ljudi javlja anemija već kod oštećenja bubrežne funkcije od 50% eritropoetin se može primjenjivati i prije početka nadomještanja bubrežne funkcije dijalizom."
+                                }
+        });
+        article.Sections.Add(new Models.ArticleObject.Section()
+        {
+            Title = "Željezo",
+            Paragraphs = new string[]
+            {
+                "Željezo je mineral koji je sastavni dio hemoglobina, proteina koji prenosi kisik u krvi. Ukoliko u organizmu postoji nedostatak željeza oslabljeno je stvaranje crvenih krvnih stanica i sposobnost krvi da prenosi kisik.  Bolesnicima na dijalizi željezo se najčešće propisuje intravenski. Dozu željeza i učestalost primjene određuje Vaš nefrolog na temelju nalaza željeza u krvi i krvne slike.  U nekim slučajevima željezo se propisuje u tabletama  (npr. Hefrrol, Ferrum Sandoz) primjerice za pacijente prije početka dijalize ili na peritonejskoj dijalizi. Željezo treba uzimati natašte, sa vitaminom C (u obliku tableta ili pak sa sokom od naranče) i paziti da 2 sata prije i nakon uzimanja željeza ne konzumirate čaj, kavu, mlijeko i mliječne proizvode, jaja, te određene vezače fosfata (kalcijev karbonat)."
+                                }
+        });
+        article.Sections.Add(new Models.ArticleObject.Section()
+        {
+            Title = "Vezači fosfora",
+            Paragraphs = new string[]
+            {
+                "Fosfor je mineral koji u organizmu ima broje uloge. Izgrađuje kosti i zube, sastavni je dio brojnih enzima i kemijskih spojeva koji pohranjuju energiju. Fosfati se unose u organizam hranom, a izlučuju bubrezima i probavnim sustavom. Poremećaj bubrežne funkcije dovodi do njegova nakupljanja u organizmu. Povišena razina fosfora dovodi do porasta razine paratiroidnog hormona (PTH) koji dovodi do razgradnje kosti te prelaska kalcija iz kosti u krv. Kalcij iz krvi se taloži u krvnim žilama i oštećuje ih dovodeći tako do povećanog rizika od srčanožilnih bolesti (primjerice srčanog i moždanog udara). ",
+                "Povišena razina fosfora može uzrokovati svrbež kože. Međutim, često pacijenti nemaju nikakvih tegoba zbog povišene razine fosfata i poremećaja kalcija. Nakon duljeg perioda bez tegoba jave se poremećaju kosti i srčanožilne komplikacije. Fosfor je jedan od \"tihih ubojica\" bolesnika s kroničnom bubrežnom bolesti.",
+                "Tri su načina smanjenja razine fosfora u krvi. Najvažniji je prehrana sa smanjenim unosom fosfata, zatim postupci učinkovite dijalize i vezači fosfata. Ukoliko se ne pridržavate pravilne prehrane fosfati će biti visoki bez obzira na ostale metode smanjenja razine fosfata. Stoga se ne može dovoljno naglasiti kako je potrebno strogo izbjegavati bilo kakvu konzerviranu, prerađenu hranu sa puno aditiva, gazirana pića u kojima je fosfor \"slobodan\" te se brzo i lako apsorbira iz probavnog sustava. S druge strane meso, mlijeko i mliječni proizvodi također su bogati fosfatima, međutim iz njih se ipak nešto manje fosfora apsorbira u probavni sustav u odnosu na konzervirane namirnice. Prokuhavanjem hrane smanjuje se sadržaj fosfora, a čuva sadržaj proteina kako bi se smanjio rizik razvoja pothranjenosti koja je česta kod bolesnika na dijalizi. Redovitim postupcima hemodijalize u trajanju od 3 do 4 sata nije moguće ukloniti dovoljnu količinu fosfora. Hemodijafiltracijom se može odstraniti tek nešto više fosfora, dok se značajna količina uklanja dugotrajnim svakodnevnim hemodijalizom (npr. kućnom hemodijalizom) koja nije dostupna u Republici Hrvatskoj.",
+                "Vezači fosfora su tablete koje u crijevima vežu fosfor iz hrane na dva načina - upijaju ga poput spužve ili poput magneta vežu na sebe. Oni ga nose probavnim traktom i on se izlučuje stolicom umjesto da se apsorbira u krv. Dozu vezača fosfora potrebno je prilagoditi veličini obroka i vrsti hrane koju planirate pojesti, tj. bitno je znati prepoznati koje su namirnice bogate fosfatima i uzeti adekvatnu količinu vezača fosfora. Postoji nekoliko vrsta vezača fosfora. Neki bolesnici liječeni dijalizom trebaju kombinaciju različitih vezača fosfora kako bi se postigla što bolja kontrola fosfata i krvi.",
+                "Kalcijev karbonat i Osvaren (kalcijeva acetat, teški magnezijev subkarbonat) sadrže kalcij. Ukoliko se uzimaju u tijeku obroka vežu na sebe fosfor, a kalcij se smanjeno apsorbira. Ako se uzmu između obroka ne djeluju na vezivanje fosfora i podižu razinu kalcija u krvi.",
+                "Renvela, Sevelamer karbonat Pliva, Sevelamer Sandoz (sevelamer karbonat), te Velphoro (saharoželjezov III oksihidroksid) su nekalcijski vezači fosfata.",
+                "Kalcijev karbonat se uzima uz obrok. Obično su potrebne visoke doze za postizanje učinkovitosti lijeka. S obzirom da sadrži kalcij povećava rizik stvaranja kalcifikacija u krvnim žilama. Moguće su probavne smetnje (mučnina, povraćanje, napuhnutost trbuha, pojačano lučenje želučane kiseline i konstipacija).",
+                "Osvaren se uzima uz obrok, a tablete se ne smiju razmrviti niti žvakati. Ukoliko su Vam tablete prevelike i imate poteškoća s gutanjem možete ih neposredno prije uzimanja prepoloviti uzduž razdjelnog ureza. Lomljenje tableta neposredno prije uzimanja sprječava neugodan okus. Osvaren je učinkovitiji od kalcijeva karbonata. Može uzrokovati probavne smetnje (mekanu stolicu, mučninu, gubitak apetita, osjećaj nadutosti, podrigivanje, zatvor, proljev). Može se javiti i povišenje kalcija u krvi koje može biti bez simptoma ili uzrokovati zatvor, gubitak apetita, mučninu, povraćanje. Dovodi i do povišenja magnezija u krvi koje je najčešće bez simptoma.",
+                "Renvela, Sevelamer karbonat Pliva i Sevelemer Sandoz trebaju se uzimati tijekom obroka. Postoje u obliku tableta i praha.  Tablete se moraju progutati neoštećene i ne smiju se drobiti, žvakati ni lomiti na komadiće prije primjene. Dodatni povoljni učinak im je snižavanje masnoća u krvi. Negativna strana je što se često propisuje velik broj tableta na dan, te ih pacijenti često ne uzimanju ili uzimaju manji broj od propisanog. Također mogu uzrokovati probavne smetnje- mučninu, povraćanje, proljev, bol u gornjem dijelu trbuha, zatvor.",
+                "Velphoro je tableta za žvakanje koja se mora uzimati tijekom obroka. Tablete se moraju žvakati, a ne smiju se progutati cijele niti drobiti. Visoko su učinkovite te se propisuje manji broj tableta na dan. Buduću da sadrže željezo uzrokuju tamnu boju stolice. Mogu uzrokovati proljev.",
+                "Vezači fosfora mogu utjecati na apsorpciju drugih lijekova koji su Vam propisani (npr. tableta željeza, antibiotika ciprofloksacina i tetraciklina). Zbog toga je potrebno napraviti pauzu od minimalno 2 sata između uzimanja vezača fosfora i drugih lijekova. Ukoliko uzimate levotiroksin (Euthyrox) treba ga uzeti najmanje jedan sat prije ili dva sata nakon primjene Velphora ili Osvarena."
+                                }
+        });
+        article.Sections.Add(new Models.ArticleObject.Section()
+        {
+            Title = "Vitamin D",
+            Paragraphs = new string[]
+            {
+                "Vitamin D se stvara u koži pod utjecajem sunca u toplijem dijelu godine. Za njegovo aktiviranje u organizmu potreban je bubreg. Nedostatak vitamina D dovodi do poremećaja metabolizma kalcija, fosfora, PTH i kosti. Stoga je bolesnicima u završnom stadiju oštećenja bubrega potrebno nadomještati vitamin D. Temeljem Vaših nalaza kalcija, fosfora i PTH biti će vam propisan biološki aktivan oblik vitamina D (kalcitriol- Rocatrol) ili njegov analog (parikalcitrol- Zemplar).",
+                "Rocaltrol su meke kapsule koje treba progutati cijele s vodom. Kod bolesnika na hemodijalizi ne smiju se primjenjivati lijekovi koji sadrže magnezij (npr. antacidi) istovremeno sa kalcitriolom jer mogu uzrokovati porast količine magnezija u organizmu. Sevelemer smanjuje apsorpciju vitamina topivih u mastima u tankom crijevu pa tako i kalcitriola. Stoga je iznimno važno pridržavati se uputa o vremenu i načinu uzimanja lijekova te o propisanoj dozi pojedinog lijeka.",
+                "Dio bolesnika treba posebnu skupinu lijekova koji reguliraju metaboličko- koštanu bolest tzv. kalcimimetike (cinacalcet- Mimpara i etelcalcetid - Parsabiv). Mimpara se uzima u obliku tableta ili granula. Tablete se ne smiju žvakati, drobiti niti lomiti. Granule iz kapsula na otvaranje se posipaju u malu količinu mekane hrane ili tekućine (npr. jogurt, jabučni sok), a nakon primjene treba popiti tekućinu kako bi se osiguralo da je lijek progutan u cijelosti.  Parsabiv se primjenjuje intravenski nakon hemodijalize. Ovi lijekovi mogu uzrokovati pad vrijednosti kalcija u krvi. Stoga će Vaš nefrolog redovito kontrolirati vrijednosti kalcija i ukoliko one padnu smanjuje se doza ili obustavlja lijek."
+                                }
+        });
+        article.Sections.Add(new Models.ArticleObject.Section()
+        {
+            Title = "Preparati za enteralnu prehranu",
+            Paragraphs = new string[]
+            {
+                "Bolesnici liječeni dijalizom imaju brojna prehrambena ograničenja. Ovisno o nalazima bolesniku se individualno ograničava unos bjelančevina, namirnica bogatim kalijem, fosforom ili kalcijem. Bolesnicima sa šećernom bolesti koja je čest uzrok zatajenja bubrega ograničava se i unos ugljikohidrata i masti. Zatajenje bubrežne funkcije praćeno je smanjenjem apetita što za posljedicu ima smanjeni unos hrane i gubitak tjelesne težine. Kod dijaliznih bolesnika česta je pojava depresije koja također može dovesti do smanjenog unosa hrane. Tijekom dijalize gube se i neki nutrijenti (aminokiseline, glukoza, peptidi, vitamini, elementi u tragovima) što povećava rizik proteinsko-energetske pothranjenosti. ",
+                "Proteinsko energetska pothranjenost dovodi do povećane sklonosti infekcijama, razvoja srčano-krvožilnih bolesti, depresije, smanjuje kvalitetu života. Kako bi se ona liječila primjenjuje se enteralna prehrana i preparati za intradialitičku parenteralnu prehranu.",
+                "Pripravci za enteralnu prehranu (npr. Nepro HP, Fresubin Renal Drink, Renilon…) sadrže specifičnu mješavinu bjelančevina, aminokiselina, masnoća, vitamina, ugljikohidrata, minerala i elemenata u tragovima u količini prilagođenoj bolesnicima na dijalizi. Posebno su formulirani kako bi se smanjio unos tekućine, kalija, fosfora i neželjenih vitamina. Uzima se između obroka (barem 1-2 h nakon obroka), dobro ohlađen, promućkan, na slamku, kroz duži vremenski period. Preporučuje se njegova primjena kao kasnog obroka (oko 22h) kako bi se izbjeglo dugotrajno razdoblje gladovanja do jutra. Kod bolesnika sa prekomjernom tjelesnom težinom a evidentiranim manjkom mišićne mase pripravak za enteralnu prehranu može zamijeniti večernji obrok. Ukoliko imate preveliki donos na težini između dijaliza svoje lijekove možete popiti uz gutljaj enteralnog napitka kako bi dodatno smanjili unos tekućine bez nutritivne vrijednosti. Pripravci se međusobno razlikuju po volumenu i sastavu a mogu biti obogaćeni i različitim okusima (jagoda, čokolada, vanilija, karamela…)."
+                                }
+        });
+        article.Sections.Add(new Models.ArticleObject.Section()
+        {
+            Title = "Lijekovi za liječenje povišenog krvnog tlaka",
+            Paragraphs = new string[]
+            {
+                "Kod bolesnika na hemodijalizi često je prisutna arterijska hipertenzija. Kada započinjete liječenje hemodijalizom potrebno je obavijestiti Vašeg liječnika o lijekovima koje uzimate budući da se neki od njih uklanjaju postupkom hemodijalize te se posljedično smanjenju njihove koncentracije ne postiže željeni učinak na smanjenje tlaka. Kako bi se adekvatno regulirao krvni tlak potrebno je uzimati sve propisane lijekove u propisanoj dozi ali istovremeno i paziti na unos kuhinjske soli, tekućine, liječiti opstruktivnu apneju u snu ukoliko je prisutna, regulirati suhu tjelesnu težinu."
+                                }
+        });
+        article.Sections.Add(new Models.ArticleObject.Section()
+        {
+            Title = "Lijekovi za smanjenje sklonosti stvaranja ugrušaka (Marivarin)",
+            Paragraphs = new string[]
+            {
+                "Marivarin (varfarin) se propisuje bolesnicima sa srčanom aritmijom (fibrilacijom atrija), za liječenje duboke venske tromboze ili plućne embolije. To je lijek čiji se učinak na zgrušavanje krvi treba strogo kontrolirati mjerenjem PV-a i INR-a. Na temelju nalaza Vaš će liječnik odredit koju dozu Marivarina trebate uzimati i kada će biti slijedeća kontrola nalaza zgrušavanja krvi. Dnevna doza ne smije se samovoljno povećavati niti smanjivati jer to smanjuje uspjeh terapije i može Vas ugroziti. Brojni lijekovi  ulaze u interakciju sa Marivarinom. Prije no što započnete uzimati novi lijek ili prestanete uzimati stari lijek savjetujte se sa liječnikom jer to može utjecati na djelovanje Marivarina. Većina lijekova protiv bolova također ulazi u interakcije (npr. Ketonal, Voltaren, Brufen). Za privremeno smanjenje boli i snižavanje temperature mogu se koristiti lijekovi koji sadrže paracetamol. Ginko, češnjak, pripravak dong quai, papaja, crvena kadulja, gospina trava i giseng utječu na djelovanje Marivarina te ih ne smijete započeti ili prekinuti uzimati tijekom liječenja Marivarinom. Količina vitamina K u hrani može utjecati na terapiju Marivarinom. Najbogatiji izvori vitamina K su zeleno povrće, listovi i bilje. Namirnice na koje treba obratiti pažnju su: avokado, brokula, kelj, ulje uljane repice, vlasac, korijander, kora krastavca, radič, raštika, kivi, listovi zelene salate, metvice, maslinovo uje, peršin, grašak, pistacija, špinat, mladi luk, soja, brusnica, grejp. Nije neophodno izbjegavati njihovu primjenu već dnevna količina mora biti ustaljena.",
+                "Ukoliko se tijekom liječenja Marivarinom javi povećana sklonost nastanku modrica, krvarenju iz nosa ili zubnog mesa, krv u mokraći, crna ili krvava stolca, povraćanje krvi ili obilna ili produljena mjesečnica obratite se liječniku.",
+                "Treba ga uvijek uzimati u isto vrijeme. Ako ste zaboravili uzeti dozu Marivarina i to ustanovite unutar 12 sati odmah uzmite propuštenu dozu. Ako je prošlo više od 12 sati propuštenu dozu podijelite na 2 ili 3 dijela te ih uzmite zajedno sa slijedećim dozama kako bi tjedna doza ostala stalna. Ako zaboravite uzeti više od jedne doze obratite se liječniku. Nikada nemojte odjednom uzeti dvostruku dozu."
+                                }
+        });
+        articles.Add(article);
+        #endregion
+
+        #region Bubrežni bolesnik i tekučina
+        article = new Models.ArticleObject();
+        article.Title = "BUBREŽNI BOLESNIK I TEKUĆINA ";
+        article.Summary = "";
+        article.ImgSrc = "/Resources/Images/water.jpg";
+        article.Sections.Add(new Models.ArticleObject.Section()
+        {
+            Title = "",
+            Paragraphs = new string[]
+            {
+                "Voda je makronutrijent bez energijske vrijednosti koji je prijeko potreban za svakodnevno funkcioniranje metabolizma. Ljudsko tijelo prosječno sadrži 55 − 60% vode koja ima brojne funkcije u organizmu – između ostalog, regulira temperaturu tijela, služi kao transporter, otapalo te reaktant. ",
+                "Tekućina u užem smislu je sve što se na sobnoj temperaturi nalazi u tekućem stanju. Pod unosom tekućine se misli na sveukupan unos tekućine koju sadrži hrana koju jedemo te treba uvijek imati na umu da i u krutoj hrani ima također tekućine (vode).  ",
+                "Najveći udio tekućine kroz hranu i pića unosi se: vodom, čajevima, mlijekom, kavom, sokovima, pudingom, jogurtom, alkoholnim pićima, sladoledom, varivima, jušnim jelima, svježim voćem i povrćem. ",
+                "Oko 500ml tekućine naše tijelo gubi dnevno znojenjem, disanjem i putem stolice. To je minimalna dnevna količina tekućine koja se mora obavezno nadoknađivati unosom putem hrane i pića. "
+                                }
+        });
+        article.Sections.Add(new Models.ArticleObject.Section()
+        {
+            Title = "KOLIKO PITI?",
+            Paragraphs = new string[]
+            {
+                "Dopušteni unos tekućine se procijenjuje individualno, sukladno diurezi (volumenu, tj. količini izlučene mokraće), kliničkom statusu bolesnika te statusu uhranjenosti (mora se paziti da se ograničavanjem unosa tekućine ne ograniči unos proteina i kalorija u tekućem obliku i naruši nutritivni status bolesnika).",
+                "Što je izlučivanje mokraće veće, bolesnik smije unijeti više tekućine u organizam.",
+                "Dok bolesnik nije na dijalizi i uredno mokri, nije potrebno ograničavati unos tekućine niti forsirati pojačan unos. Treba piti kada smo žedni. ",
+                "Kada se započne liječenje hemodijalizom važno je ograničiti dnevni unos tekućine između postupaka hemodijalize. Nastojati ne piti iz navike ili razonode, već samo onda kada se uistinu osjeti žed. Pritom treba paziti da se unosi ona tekućina koja je dozvoljena preporukom dijete za bubrežnog bolesnika.",
+                "<mark>U nedavno objavljenoj velikoj randomiziranoj, placebo kontroliranoj studiji u Kanadi na bolesnicima koji nisu na dijalizi (faze bubrežne bolesti od 1. do 4.) pokazano je da je sigurno povećati dnevni unos tekućine za 700mL više od uobičajene (1,5-2 L) bez reperkusija na bubrežnu funkciju.(1)",
+                "Načelno, bolesnik na dijalizi trebao bi unijeti u organizam 500-800 mL vode više od one količine koju dnevno izmokri. Važno je da se bolesnici svakodnevno važu kod kuće i to u istoj odjeći (ili bez nje) kako bi se mogla pratiti promjena tjelesne mase. Porast tjelesne mase može biti na račun zadržavanja tekućine što treba izbjegavati jer se dijalizom onda mora odstranjivati više. ",
+                "<mark>Pokušaji ograničavanja unosa tekućine u bolesnika koji se liječi dijalizom su uzaludni ako se ne ograničava uz to i unos soli istovremeno. Samo smanjenje unosa vode kod pacijenata povećava osmolalnost vanstanične tekućine (tekućina između stanica izvan krvi) što stimulira žeđ nakon čega slijedi pojačana konzumacija vode ne bi li organizam postigao ravnotežu. Rezultat je frustacija bolesnika koji je žedan i ne uspijeva kontrolirati svoj dnevni unos.(2)"
+                                }
+        });
+        article.Sections.Add(new Models.ArticleObject.Section()
+        {
+            Title = "Dozvoljen unos vode prema stadijima bubrežne bolesti: ",
+            Paragraphs = new string[]
+            {
+                    "<b>Stadij 1-4 (eGFR CKD-EPI  90-15 mL/min/1.73m²)",
+                    "<li> Unositi prema osjećaju žeđi",
+                    "<li> Nije potrebno ograničavatii unos vode niti pretjerivati s unosom",
+                    "<li> I prevelik unos i prejako ustezanje od unosa samo štete bubrežnoj funkciji",
+
+                    "",
+
+                    "<b>Stadij 5 – (eGFR CKD-EPI  <15 mL/min/1.73m² ili dijalizno liječenje)",
+                    "<li> Mokrenje > 1000mL dnevno – unos 2000mL",
+                    "<li> Mokrenje 500 - 1000mL dnevno – unos 1000 - 1500mL",
+                    "<li> Oligo / anurija(< 500mL ili bez mokrenja) – unos 500 - 800mL",
+
+                    "",
+
+                    "<li> Jednostavno za zapamtiti je da treba piti 500 do 750 ml vode dnevno više od onoga što se izmokri",
+                    "<li> Regulirati unos tekućine tako da „višak“  dobivene težine koja se mora skidati na dijalizi ne prelazi 800 - 1000 g dnevno",
+                    "<li> Imati na umu da će žeđ biti jača dan uoči dijalize nego što će to biti dan nakon dijalize",
+                    "<li> Piti tekućinu polagano u gutljajima i raspodijeljeno tijekom cijelog dana, a ne sve odjednom"
+                                }
+        });
+        article.Sections.Add(new Models.ArticleObject.Section()
+        {
+            Title = "OSTATNA BUBREŽNA FUNKCIJA",
+            Paragraphs = new string[]
+            {
+                "Ostatna bubrežna funkcija (OBF) u bolesnika s terminalnim stadijem bubrežne bolesti na programu kroničnog dijaliznog liječenja definira se kao sposobnost nativnih (bolesnikovih) bubrega da eliminiraju vodu i uremijske toksine.OBF je snažan prognostički čimbenik, a očuvanje iste je povezano s boljim preživljenjem i većom kvalitetom života u bolesnika. Povoljni utjecaji ostatne bubrežne funkcije na zdravlje bolesnika na dijalizi su višestruki. Bolesnici koji imaju ostatnu bubrežnu funkciju imaju veći stupanj izlučivanja natrija, vode, vodikovih iona i kalija, imaju niže međudijalitičko povećanje tjelesne težine, niže vrijednosti krvnog tlaka i koncentraciju kalija te veće koncentracije bikarbonata. Također, imaju veće stope izlučivanja molekula srednje veličine i proizvodnju vlastitog eritropoetina i vitamina D.(3)",
+                "Očuvanje OBF-a se smatra jednim od primarnih ciljeva u liječenju bolesnika s terminalnim stanjem bubrežne bolesti. ",
+                "<mark>Studije su pokazale da 1 ml/min ostatnog bubrežnog klirensa uree rezultira većim preživljenjem bolesnika nego 1 ml/min klirensa uree na dijalizi, što se može pripisati većem uklanjanju molekula srednje veličine i poboljšanoj kontroli volumena od strane nativnih bubrega.(4),(5)"
+                            }
+        });
+        article.Sections.Add(new Models.ArticleObject.Section()
+        {
+            Title = "VOLUMNO OPTEREĆENJE I SUHA TEŽINA",
+            Paragraphs = new string[]
+            {
+                "U početnim stadijima gubitka bubrežne funkcije uredno je izlučivanje mokraće ili čak povećano. Međutim, kad kronična bolest uznapreduje i dođe do završnog stadija, dolazi do nakupljanja tekućine uslijed oligurije ili anurije (gubitak mokrenja) te tada treba smanjiti unos tekućine.",
+                "Ako bolesnik čini suprotno, dolazi do nakupljanja vode u organizmu i neželjenih simptoma i događaja. Simptomi koji upućuju na prekomjeran unos tekućine u organizam: pojačano znojenje, naglo povećanje tjelesne mase, edemi potkoljenica, glavobolja, gubitak energije i osjećaj umora, otežano disanje, povišen krvni tlak.",
+                "Na dijalizi se određuje 'suha težina bolesnika'. Zato se prije i poslije dijalize bolesnik važe i određuje se koliko vode će se odstraniti postupkom dijalize. ",
+                "Suha težina je najniža tjelesna masa pri kojoj bolesnik nema pojavu nepoželjnih incidenata i simptoma između dijaliza (npr. grčeva, pada krvnog tlaka, vrtoglavica) i pri kojoj ne postoji preopterećenje organizma tekućinom. ",
+                "<mark>Volumno preopterećenje povezano je s povećanim pobolijevanjem i smrtnosti u bolesnika na hemodijalizi. Zadržavanje tekućine je čak opasnije od same arterijske hipertenzije i ima veću prediktivnu vrijednost povišenog rizika za smrtnost i pobolijevanje. Volumenom preopterećenje od posebne je važnosti u razvoju kardiovaskularne bolesti i remodeliranja srčanog mišića.(6)"
+                            }
+        });
+        article.Sections.Add(new Models.ArticleObject.Section()
+        {
+            Title = "SAŽETAK",
+            Paragraphs = new string[] {
+                "- Prije dijalize nema ograničenja u unosu tekućine u organizam.",
+                "- Na dijalizi treba piti 500 do 800 mL vode dnevno više od onoga što se izmokri",
+                "- Čuvati ostatnu bubrežnu funkciju jer ona čuva sve ostale funkcije bubrega, preživljenje i bolju kvalitetu života u bolesnika",
+                "- Regulirati unos tekućine tako da „višak“ težine koji se donosi na dijalizu ne prelazi 800 - 1000 g dnevno",
+                "- Volumno preopterećenje povezano je s povećanim morbiditetom i mortalitetom u bolesnika na hemodijalizi. "
+                }
+        });
+
+        articles.Add(article);
+        #endregion
+
+        #region Poremečaj spolnih hormona i seksualne funckije
+        article = new Models.ArticleObject();
+        article.Title = "Poremećaji spolnih hormona i seksualne funkcije u bolesnika sa zatajenjem bubrežne funckije";
+        article.Summary = "";
+        article.ImgSrc = "/Resources/Images/hormone.png";
+        article.Sections.Add(new Models.ArticleObject.Section(){
+            Title = "",
+            Paragraphs = new string[]
+                {
+                    "Poremećaji spolne funkcije česti su u bolesnika sa zatajenjem bubrežne funkcije. Oko 50% muškaraca navodi tegobe erektilne disfunkcije, dok još veći postotak i žena i muškaraca navodi smanjenje libida. Na poremećaje hormonske i spolne funkcije osim uremičkog okoliša utječu i oštećenje perifrenog živčanog sustava (periferna neuropatije), bolesti perifernog vaskularnog sustava te lijekovi. ",
+                    "U muškaraca je kronično bubrežno zatajenje povezano s poremećenom spermatogenezom i oštećenjem testisa. Testisi pokazuju poremećaj endokrine funkcije u smislu smanjenja stvaranja testosterona, tako da su razine ukupnog i slobodnog testosterona snižene. Već kod umjerenog sniženja glomerularne funkcije nalaze se niže vrijednosti slobodnog testosterona i oštećena osjetljivost Leydigovih stanica (stanice testisa odovorne za stvaranje hormona) na humani korionski gonadotropin (HCG). Prema istraživanjima u uremičnom serumu postoje čimbenici koji blokiraju receptor za luteinizirajući hormon (LH) i ta je aktivnost direktno povezana s glomerularnom filtracijom i većinom nestaje nakon transplantacije bubrega. U plazmi uremičnih bolesnika nalazi se povišena koncentracija LH. Te povišene vrijednosti nalaze se rano u bubrežnom zatajenju te postepeno rastu s daljnjim pogoršanjem bubrežne funkcije,a posljedica su smanjenog lučenja testosterona iz Leydigovih stanica kao i smanjenog izlučivanja putem bubrega. Također se nalaze i povišene vrijednosti prolaktina kao posljedica povišenog stvaranja istoga. U oko 30% muškaraca na intermitentnoj dijalizi javlja se ginekomastija. Obično se javlja u početnim mjesecima započinjanja postupaka dijalize te ima tendenciju smanjenje kako se postupci dijalize nastavljaju. Točan uzrok pojave je nejasan. Kod obrade seksualne difunkcije u muškaraca potrebno je uzeti u obzir sve čimbenike koji ju mogu uzrokovati – smanjeno stvaranje testosterona, poremećaji otpuštanja LH, povišene razine prolaktina, anemija, sekundarni hiperparatiroidizam, poremećaji perifernog krvožilja, neuropatija, psihološki uzroci te lijekovi koje bolesnik uzima. Od lijekova najčešće se spominju antihipertenzivi i to lijekovi s centralnim učinkom i beta-blokatori. ",
+                    "U žena je kronično bubrežno zatajenje povezano s poremećajima menstualnog ciklusa, nepolodnošću te prijevremenom menopauzom. Poremećaji su posljedica hormonskih poremećaja uzrokovanih oštećenom bubrežnom funkcijom i to više s poremećenom funkcijom hipotalamusa nego s poremećenom funkcijom jajnika i djelomično mogu biti poboljšani intenzifikacijom postupaka dijalize te transplantacijom bubrega. Poremećaji menstrualnog ciklusa i plodnosti postaju sve izraženiji s pogoršanjem bubrežne funkcije tako da je većina žena u terminalnoj fazi zatajenja bubrega amenoreična i neplodna. Poremećaj cikličnoga otpuštanja gonadotropin otpuštajućeg hormona (GnRH) dovodi do poremećaja ovulacije, tako da su učestali anovulacijski menstrualni ciklusi. Na navedeno utječu i povišene vrijednosti prolaktina te povišene razine GnRH i LH posljedično smanjenom izlučivanju putem bubrega. Pojačani intenzitet postupaka hemodijalize i transplantacija bubrega često dovode do oporavka menstrualnog ciklusa i plodnosti. Zbog povišene vrijednosti prolaktina poremećeno je otpuštanje GnRH što dovodi do poremećaja pulsatilnog otpuštanja LH i FSH što pak dovodi do smanjenja i prestanka lučenja estradiola. Navedeni mehanizam dovodi do poremećenog menstrualnog cikusa (smanjena ili pojačana krvarenja), anovulacije, amenoreje (potpunog gubitka menstrualnog krvarenja) i neplodnosti. Unatoč anovulacijskim cikusima, endometrij žena s kroničnim bubrežnim zatajenjem ostaje osjetljiv na spolne hormone jajnika; pregledima registara bolesnica nađena je učestalija pojavnost patoloških promjena endometrija no nije se pokazala već učestalost karcinoma endometrija. Za razliku od navedenog,, pojavnost karcinoma cerviksa je veća kod bolesnica u kroničnom programu hemodijalize (smatra se posljedično relativnoj imunosupresiji u okolnostima virusno-posredovanog karcionoma). "
+                }
+        });
+
+        articles.Add(article);
+        #endregion
+
+        //article = new Models.ArticleObject();
+        //article.Title = "";
+        //article.Summary = "";
+        //article.ImgSrc = "";
+
+        this.StateHasChanged();
+    }
+    private void ExpandCard(Models.ArticleObject article)
+    {
+        ActiveArticleObject = article;
+        JS.InvokeVoidAsync("scrollToTop");
+    }
+    private void CloseArticle()
+    {
+        ActiveArticleObject = null;
+        JS.InvokeVoidAsync("scrollToTop");
+    }
+}
